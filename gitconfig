@@ -1,0 +1,10 @@
+[user]
+	name = Anon Ray
+	email = rayanon004@gmail.com
+[core]
+	editor = vim
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
