@@ -15,7 +15,7 @@ call pathogen#infect()
 "So turning it off and back on again forces plugins to load correctly
 "http://blog.darevay.com/2010/10/a-brief-note-on-pathogen-for-vim/
 filetype off
-syntax enable
+syntax on
 filetype plugin indent on " Enable filetype detection
 
 set wildmenu "Turn on Wild menu
