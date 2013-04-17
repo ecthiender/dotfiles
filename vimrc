@@ -37,7 +37,7 @@ set softtabstop=2
 "set autoindent
 "set smartindent
 set textwidth=79
-set foldmethod=indent
+"set foldmethod=indent
 
 set magic "Set magic on for regex
 set ignorecase "ignore case when searching
