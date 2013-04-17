@@ -36,6 +36,8 @@ set softtabstop=2
 "set smarttab
 "set autoindent
 "set smartindent
+set textwidth=79
+set foldmethod=indent
 
 set magic "Set magic on for regex
 set ignorecase "ignore case when searching
@@ -71,3 +73,7 @@ set title
 " default one <c-tab> doesn't work with guake (and many other term emulators)
 " as guake captures the <ctrl> key and doesn't send it to vim
 let g:UltiSnipsListSnippets="<s-tab>"
+
+" display a friendly ascii-art upon opening vim
+"echo "   (>^.^<)"
+

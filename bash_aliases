@@ -21,5 +21,5 @@ alias speed='zsh $HOME/codeyard/speed.sh '
 
 # Not aliases but variables used frequently in shell
 #pecab='$HOME/server/www/pecab'
-alipi='$HOME/server/www/alipi'
-
+#alipi='$HOME/server/www/alipi'
+server=$HOME'/server/www'
