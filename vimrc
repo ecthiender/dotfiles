@@ -43,14 +43,10 @@ set magic "Set magic on for regex
 set ignorecase "ignore case when searching
 set smartcase "see :help smartcase
 
-" config for solarized scheme
+" dark solarized colorscheme
 set background=dark
-set t_Co=256
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
 colorscheme solarized
+let g:solarized_termtrans=1
 
 set encoding=utf8
 "set cmdheight=2 "The commandbar height
@@ -77,3 +73,6 @@ let g:UltiSnipsListSnippets="<s-tab>"
 " display a friendly ascii-art upon opening vim
 "echo "   (>^.^<)"
 
+" CtrlP Plugin config
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'

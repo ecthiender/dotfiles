@@ -1,8 +1,8 @@
 # Set up the prompt
-
 autoload -Uz promptinit
 promptinit
-prompt adam1
+# setting solarized colors for the prompt
+prompt adam1 brblack magenta magenta
 
 setopt histignorealldups sharehistory
 
@@ -15,7 +15,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # use 256 colors for terminal colors
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 # Use modern completion system
 autoload -Uz compinit
