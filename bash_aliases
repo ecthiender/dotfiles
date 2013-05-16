@@ -18,6 +18,9 @@ alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
 alias tmux='sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # Not aliases but variables used frequently in shell
 #pecab='$HOME/server/www/pecab'

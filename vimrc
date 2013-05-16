@@ -44,9 +44,12 @@ set ignorecase "ignore case when searching
 set smartcase "see :help smartcase
 
 " dark solarized colorscheme
+":syntax enable
 set background=dark
 colorscheme solarized
+"let g:solarized_bold=0
 let g:solarized_termtrans=1
+syntax on
 
 set encoding=utf8
 "set cmdheight=2 "The commandbar height
@@ -76,3 +79,6 @@ let g:UltiSnipsListSnippets="<s-tab>"
 " CtrlP Plugin config
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" JSLint Plugin config
+let g:JSLintHighlightErrorLine = 0
