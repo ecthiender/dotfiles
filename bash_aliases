@@ -15,14 +15,21 @@ alias rsync='rsync --progress --partial --verbose --recursive --copy-links --cop
 alias screenoff='xset dpms force off' # turn laptop monitor off
 alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
 alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
-alias tmux='sh $HOME/.tmux-session-init.sh'
+alias tmx='sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
+alias updateSW='sudo apt-get update && sudo apt-get dist-upgrade'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+# mv and cp are always verbose
+alias mv='mv -v'
+alias cp='cp -v'
+
+alias mtr='mtr -t'
+alias postgres='sudo -u postgres psql'
 
 # Not aliases but variables used frequently in shell
-#pecab='$HOME/server/www/pecab'
-#alipi='$HOME/server/www/alipi'
 server=$HOME'/server/www'
+swtmkr=$HOME'/server/www/SWeeTWeb/platform/SwtMaker'
+swtstore=$HOME'/server/www/SWeeTWeb/platform/SwtStore/sweet-web-engine'

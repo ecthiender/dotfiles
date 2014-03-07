@@ -1,8 +1,13 @@
+#
+# use 256 colors for terminal colors
+#export TERM="xterm-256color"
+
+autoload colors && colors
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
 # setting solarized colors for the prompt
-prompt adam1 brblack magenta magenta
+prompt adam1 black black blue
 
 setopt histignorealldups sharehistory
 
@@ -14,8 +19,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# use 256 colors for terminal colors
-#export TERM="xterm-256color"
 
 # Use modern completion system
 autoload -Uz compinit
@@ -47,3 +50,4 @@ fi
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+

@@ -1,9 +1,13 @@
 #!/bin/sh
 # tmux session initialisation script
 
-SESSION="work"
-workspace1="$HOME/server/www"
-workspace2="$HOME/codeyard"
+SESSION=$1
+if [ -z "$SESSION" ]
+then
+  SESSION="work"
+fi
+workspace1="$server"
+workspace2="$server"
 window1=
 
 tmux has-session -t $SESSION > /dev/null
@@ -16,10 +20,10 @@ then
 fi
 
 echo "Creating new session $SESSION\n"
-cd $workspace1
-tmux new-session -d -s $SESSION -n www-dev
-cd $workspace2
-tmux new-window -t $SESSION:2 -n codeyard
+#cd $workspace1
+tmux new-session -d -s $SESSION
+#cd $workspace2
+#tmux new-window -t $SESSION:2 -n www-dev
 
 tmux select-window -t $SESSION:1
 tmux attach-session -t $SESSION
