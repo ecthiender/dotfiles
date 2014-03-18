@@ -4,9 +4,9 @@
 # Create symlinks from files inside this repo to config file in user's home
 # directory
 
-ln -s ./vim ~/.vim
-ln -s ./vim/vimrc ~/.vimrc
-ln -s ./zshrc ~/.zshrc
-ln -s ./tmux.conf ~/.tmux.conf
-ln -s ./tmux-session-init.sh ~/.tmux-session-init.sh
-ln -s ./gitconfig ~/.gitconfig
+ln -s ~/dotfiles/vim ~/.vim
+ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
