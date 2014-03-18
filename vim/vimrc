@@ -8,15 +8,19 @@
 set nocompatible
 
 " init the runtime/package manager pathogen
-call pathogen#infect()
+"call pathogen#infect()
+"swtiching to new package manager: NeoBundle:
+"https://github.com/Shougo/neobundle.vim
+source ~/.vim/neobundle.vim
 
 "This seems to be common problem caused by the 'system' vimrc in
 "some distributions setting filetype on before you set up pathogen.
 "So turning it off and back on again forces plugins to load correctly
 "http://blog.darevay.com/2010/10/a-brief-note-on-pathogen-for-vim/
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"filetype off
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+
 syntax on
 
 let g:ft_ignore_pat = '\.org' " VimOrganizer setting.

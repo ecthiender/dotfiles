@@ -5,7 +5,6 @@ autoload colors && colors
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
-# setting solarized colors for the prompt
 prompt adam1 black blue blue
 
 setopt histignorealldups sharehistory
@@ -42,11 +41,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Load alias files if exist
-if [ -f ~/.default_bash_aliases ]; then
-  . ~/.default_bash_aliases
-fi
-
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
 fi
 

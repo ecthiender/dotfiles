@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Script to install dotfiles and setup related environ
+# Create symlinks from files inside this repo to config file in user's home
+# directory
+
+ln -s ./vim ~/.vim
+ln -s ./vim/vimrc ~/.vimrc
+ln -s ./zshrc ~/.zshrc
+ln -s ./tmux.conf ~/.tmux.conf
+ln -s ./tmux-session-init.sh ~/.tmux-session-init.sh
+ln -s ./gitconfig ~/.gitconfig
