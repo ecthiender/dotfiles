@@ -1,12 +1,91 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to install dotfiles and setup related environ
+# Author: Anon Ray <rayanon004@gmail.com>
+# BSD License
+
+# Check if zsh, tmux, vim, git are installed. If not install them.
 # Create symlinks from files inside this repo to config file in user's home
 # directory
 
-ln -s ~/dotfiles/vim ~/.vim
-ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-ln -s ~/dotfiles/zshrc ~/.zshrc
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
+# These are the requirements for my environ
+REQUIREMENTS=( zsh tmux vim git emacs )
+
+is_installed() {
+  req=$1
+  # To find out a program is installed from shell script might not be
+  # straightforward and consistent. See this answer for more details:
+  # http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script#677212
+  if $(command -v "$req" > /dev/null); then # if found
+    return 0
+  else
+    return 1
+  fi
+}
+
+check_requirements() {
+  for req in "${REQUIREMENTS[@]}"
+  do
+    if ! $(is_installed $req); then
+      to_install=( "${to_install[@]}" $req )
+    fi
+  done
+  if [ -z "${to_install[0]}" ]; then
+    echo "All requirements satisfy.."
+    return 0
+  else
+    return 1
+  fi
+}
+
+install_requirements() {
+  packages=(${to_install[@]})
+
+  # Check the system - and decide the package manager
+  if $(is_installed apt-get); then # apt based distro
+    package_manager="apt-get"
+  else
+    if $(is_installed yum); then # yum based distro
+      package_manager="yum"
+    fi
+  fi
+  if [ -z "$package_manager" ]; then
+    echo "Oops! Could not find any known package manager!"
+    exit 1
+  fi
+
+  echo "Found package manager: $package_manager"
+  echo "Packages to be insalled: ${packages[@]}"
+  read -p "Continue? [y/N]: "
+
+  if [ $REPLY != "y" ]; then
+    echo "Installation aborted."
+    exit 0
+  fi
+
+  echo "sudo $package_manager install -y ${packages[@]}"
+  # System-wide installation; use sudo
+  sudo $package_manager install -y ${packages[@]} && create_symlinks
+}
+
+create_symlinks() {
+  echo "Creating symlinks for necessary files.."
+  ln -s ~/dotfiles/vim ~/.vim
+  ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+  ln -s ~/dotfiles/zshrc ~/.zshrc
+  ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+  ln -s ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
+  ln -s ~/dotfiles/gitconfig ~/.gitconfig
+  ln -s ~/dotfiles/aliases ~/.aliases
+  # Don't want to have any bash settings
+  #ln -s ~/dotfiles/bashrc ~/.bashrc
+}
+
+if check_requirements; then
+  exit 0 # all requirements satisfy
+else
+  install_requirements
+fi
+
+echo "Done"
+exit 0
