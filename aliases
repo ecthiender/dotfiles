@@ -1,7 +1,7 @@
 # Alias file which can be sourced in your favourite shell startup script
 # Aliases help you type fewer keystrokes for the commands you use the most and
 # also automate some of your mundane taks.
-# ecthiender aka Anon Ray <rayanon004@gmail.com>
+# ecthiender <rayanon@riseup.net>
 
 # enable color support of ls and also add handy aliases
 alias ls='ls --color=auto'
@@ -9,7 +9,7 @@ alias ls='ls --color=auto'
 #alias vdir='vdir --color=auto'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -37,7 +37,7 @@ alias sshx3='ssh -l ecthiender 88.198.36.219 -v' # mothership.in
 alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
 alias ssh-sky='ssh -l badol 10.0.0.10 -v'
 #alias sshvagrant='ssh -l vagrant 10.1.1.201 -v'
- 
+
 # use following rsync options always
 alias rsync='rsync --progress --partial --verbose --recursive --copy-links --copy-dirlinks -h'
 
@@ -58,11 +58,14 @@ alias ....='cd ../../..'
 alias mv='mv -v'
 alias cp='cp -v'
 
+alias mocp='mocp -T red_theme'
 alias mtr='mtr -t'
 alias postgres='sudo -u postgres psql'
 
 # Not aliases but variables used frequently in shell
 server=$HOME'/server/www'
-swtmkr=$HOME'/server/www/SWeeTWeb/platform/SwtMaker'
-swtstore=$HOME'/server/www/SWeeTWeb/platform/SwtStore/sweet-web-engine'
+swt=$server'/SWeeTWeb/platform'
+swtmkr=$swt'/SwtMaker'
+swtr=$swtmkr'/webapps/swtr'
+swtstore=$swt'/SwtStore/sweet-web-engine'
 

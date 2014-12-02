@@ -3,4 +3,6 @@ vim/swaps/*
 vim/undo/*
 vim/backups/*
 vim/.netrwhist
+.netrwhist
 vim/bundle
+vim/swaps

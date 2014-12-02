@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to install dotfiles and setup related environ
-# Author: Anon Ray <rayanon004@gmail.com>
+# Anon Ray <rayanon@riseup.net>
 # BSD License
 
 # Check if zsh, tmux, vim, git are installed. If not install them.
@@ -42,6 +42,7 @@ install_requirements() {
   packages=(${to_install[@]})
 
   # Check the system - and decide the package manager
+  # TODO: add arch
   if $(is_installed apt-get); then # apt based distro
     package_manager="apt-get"
   else
@@ -51,6 +52,7 @@ install_requirements() {
   fi
   if [ -z "$package_manager" ]; then
     echo "Oops! Could not find any known package manager!"
+    echo "Maybe you can modify the script to add your package manager.."
     exit 1
   fi
 

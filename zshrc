@@ -1,11 +1,11 @@
 # use 256 colors for terminal colors
-#export TERM="xterm-256color"
+export TERM="xterm-256color"
 
 autoload colors && colors
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
-prompt adam1 black blue blue
+prompt adam1 blue blue green
 
 setopt histignorealldups sharehistory
 

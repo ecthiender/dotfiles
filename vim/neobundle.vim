@@ -93,18 +93,33 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'kien/ctrlp.vim'
 "NeoBundle 'gregsexton/gitv'
 "NeoBundle 'ap/vim-css-color'
-NeoBundle 'chrisbra/NrrwRgn'
+"NeoBundle 'chrisbra/NrrwRgn'
 "NeoBundle 'honza/vim-snippets'
 " NeoBundle 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
 NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+
 "NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'MarcWeber/ultisnips'
 "NeoBundle 'AndrewRadev/splitjoin.vim'
 " NeoBundle 'Keithbsmiley/investigate.vim'
+
+" dependencies for VimOrganizer
 NeoBundle 'gregsexton/VimCalc'
 NeoBundle 'mattn/calendar-vim'
+NeoBundle 'vim-scripts/utl.vim'
+NeoBundle 'jean/NrrwRgn'
+" VimOrganizer - org mode for vim
+NeoBundle 'hsitz/VimOrganizer'
+
 NeoBundle 'csexton/trailertrash.vim'
+NeoBundle 'vim-scripts/Flake8-vim'
+NeoBundle 'bling/vim-airline'
+"NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'leshill/vim-json'
+"NeoBundle 'Valloric/YouCompleteMe'
 
 "NeoBundleLazy 'dahu/vimple', {
 "      \ 'autoload': {
