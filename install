@@ -9,7 +9,7 @@
 # directory
 
 # These are the requirements for my environ
-REQUIREMENTS=( zsh tmux vim git emacs )
+CORE_REQUIREMENTS=( zsh tmux vim git emacs ssh )
 
 is_installed() {
   req=$1
@@ -23,8 +23,8 @@ is_installed() {
   fi
 }
 
-check_requirements() {
-  for req in "${REQUIREMENTS[@]}"
+check_core_requirements() {
+  for req in "${CORE_REQUIREMENTS[@]}"
   do
     if ! $(is_installed $req); then
       to_install=( "${to_install[@]}" $req )
@@ -38,7 +38,7 @@ check_requirements() {
   fi
 }
 
-install_requirements() {
+install_core_requirements() {
   packages=(${to_install[@]})
 
   # Check the system - and decide the package manager
@@ -67,27 +67,43 @@ install_requirements() {
 
   echo "sudo $package_manager install -y ${packages[@]}"
   # System-wide installation; use sudo
-  sudo $package_manager install -y ${packages[@]} && create_symlinks
+  sudo $package_manager install -y ${packages[@]}
+}
+
+install_oh_my_zsh() {
+  repo_url="git://github.com/robbyrussell/oh-my-zsh.git"
+  oh_my_zsh_dir="$HOME/.oh-my-zsh"
+  echo "Cloning oh-my-zsh.."
+  git clone $repo_url $oh_my_zsh_dir
+  source ~/.zshrc
+}
+
+set_zsh_default() {
+  echo "Setting zsh to be default shell.."
+  chsh -s $(which zsh)
 }
 
 create_symlinks() {
   echo "Creating symlinks for necessary files.."
-  ln -s ~/dotfiles/vim ~/.vim
-  ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-  ln -s ~/dotfiles/zshrc ~/.zshrc
-  ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-  ln -s ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
-  ln -s ~/dotfiles/gitconfig ~/.gitconfig
-  ln -s ~/dotfiles/aliases ~/.aliases
-  # Don't want to have any bash settings
-  #ln -s ~/dotfiles/bashrc ~/.bashrc
+  ln -sf ~/dotfiles/vim ~/.vim
+  ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
+  ln -sf ~/dotfiles/zshrc ~/.zshrc
+  ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
+  ln -sf ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
+  ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+  ln -sf ~/dotfiles/aliases ~/.aliases
 }
 
-if check_requirements; then
-  exit 0 # all requirements satisfy
-else
-  install_requirements
-fi
+install() {
+  if check_core_requirements; then
+    exit 0 # all requirements satisfy
+  else
+    install_core_requirements && create_symlinks &&\
+      set_zsh_default && install_oh_my_zsh
 
-echo "Done"
-exit 0
+    echo "Done"
+    exit 0
+  fi
+}
+
+install
