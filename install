@@ -70,6 +70,20 @@ install_core_requirements() {
   sudo $package_manager install -y ${packages[@]}
 }
 
+create_symlinks() {
+  echo "Creating symlinks for necessary files.."
+  ln -sf ~/dotfiles/vim ~/.vim
+  ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
+  ln -sf ~/dotfiles/zshrc ~/.zshrc
+  ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
+  ln -sf ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
+  ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+  ln -sf ~/dotfiles/aliases ~/.aliases
+}
+
+
+# install extras
+
 install_oh_my_zsh() {
   repo_url="git://github.com/robbyrussell/oh-my-zsh.git"
   oh_my_zsh_dir="$HOME/.oh-my-zsh"
@@ -83,17 +97,8 @@ set_zsh_default() {
   chsh -s $(which zsh)
 }
 
-create_symlinks() {
-  echo "Creating symlinks for necessary files.."
-  ln -sf ~/dotfiles/vim ~/.vim
-  ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
-  ln -sf ~/dotfiles/zshrc ~/.zshrc
-  ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
-  ln -sf ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
-  ln -sf ~/dotfiles/gitconfig ~/.gitconfig
-  ln -sf ~/dotfiles/aliases ~/.aliases
-}
 
+# install the core + extras..
 install() {
   if check_core_requirements; then
     exit 0 # all requirements satisfy

@@ -1,47 +1,6 @@
-" NeoBundle Setup {{{1
-" Script taken from https://github.com/dhruvasagar/dotfiles/tree/master/vim
+" this is the list of all the vim plugins I use
 
-let g:bundles_path = '~/.vim/bundle/'
 
-if has('vim_starting')
-  execute 'set runtimepath+=' . g:bundles_path . 'neobundle.vim/'
-  if !isdirectory(expand(g:bundles_path . 'neobundle.vim'))
-    echo "Installing NeoBundle\n"
-    silent execute '!mkdir -p ' . g:bundles_path
-    silent execute '!git clone https://github.com/Shougo/neobundle.vim ' . g:bundles_path . 'neobundle.vim'
-  endif
-endif
-call neobundle#rc(expand(g:bundles_path))
-
-" NeoBundles {{{1
-" Settings {{{2
-let g:neobundle#types#git#default_protocol='ssh'
-
-" Shougo Plugins {{{2
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundleLazy 'Shougo/vimshell.vim', {
-      \ 'depends': [['Shougo/vimproc.vim', {
-      \   'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak'
-      \   }
-      \ }]],
-      \ 'autoload' : {
-      \   'commands': [
-      \     'VimShell',
-      \     'VimShellExecute',
-      \     'VimShellInteractive',
-      \     'VimShellTerminal',
-      \     'VimShellPop'
-      \   ],
-      \   'functions': ['vimshel#interactive#send']
-      \ }
-      \}
-
-" tpope plugins {{{2
 "NeoBundle 'tpope/vim-rake'
 "NeoBundle 'tpope/vim-eunuch'
 "NeoBundle 'tpope/vim-repeat'
@@ -94,9 +53,9 @@ NeoBundle 'kien/ctrlp.vim'
 "NeoBundle 'gregsexton/gitv'
 "NeoBundle 'ap/vim-css-color'
 "NeoBundle 'chrisbra/NrrwRgn'
-"NeoBundle 'honza/vim-snippets'
 " NeoBundle 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
 NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'honza/vim-snippets'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 
@@ -120,6 +79,9 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'leshill/vim-json'
 "NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+
+NeoBundle 'ryanss/vim-hackernews'
 
 "NeoBundleLazy 'dahu/vimple', {
 "      \ 'autoload': {
@@ -230,8 +192,5 @@ NeoBundle 'leshill/vim-json'
 "      \ }
 "      \}
 
-" My plugins {{{2
+" My plugins
 "NeoBundleLocal ~/code/vim_plugins
-
-" NeoBundleCheck {{{2
-NeoBundleCheck

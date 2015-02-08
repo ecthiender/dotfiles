@@ -6,3 +6,4 @@ vim/.netrwhist
 .netrwhist
 vim/bundle
 vim/swaps
+*.spl

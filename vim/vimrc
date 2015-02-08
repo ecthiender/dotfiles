@@ -1,19 +1,20 @@
 " This is a collection over time, from dotfiles from various sources
 
-" enable all features
-" don't need backwards compatibility with vi
-" This must be first, because it changes other options
-" as a side effect.
-set nocompatible
+
+" core vim settings and config
+
+set nocompatible " be - IMproved!
+
+set encoding=utf8 " because the whole world isn't english
+
 
 " init the runtime/package manager neobundle
-source ~/.vim/neobundle.vim
+source ~/.vim/neobundle-init.vim
 
-syntax on
-
-let g:ft_ignore_pat = '\.org' " VimOrganizer setting.
 
 filetype plugin indent on " Enable filetype detection
+
+syntax on
 
 set wildmenu "Turn on Wild menu
 
@@ -34,23 +35,24 @@ set softtabstop=2
 "set autoindent
 "set smartindent
 set textwidth=79
+set formatoptions+=t
 "set foldmethod=indent
 
 set magic "Set magic on for regex
 set ignorecase "ignore case when searching
 set smartcase "see :help smartcase
 
+set laststatus=2  " Always show status line
+
+" Omnicompletion
+set omnifunc=syntaxcomplete#Complete
+
 set t_Co=256
 
 set background=dark
 colorscheme jellybeans
 
-syntax on
-
-set encoding=utf8
-
-"set cmdheight=2 "The commandbar height
-"autocmd FileType php set omnifunc=phpcomplete "phpautocomplete
+set cmdheight=2 "The commandbar height
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -69,44 +71,18 @@ set title
 set noerrorbells
 set visualbell t_vb=
 
-if has("gui_running")
-  set guifont=Fantasque\ Sans\ Mono\ Regular\ 12
-  set background=dark
-  colorscheme jellybeans
-endif
-
 autocmd GUIEnter * set visualbell t_vb=
 
-" UltiSnips - shortcut for listing snippets
-" default one <c-tab> doesn't work with guake (and many other term emulators)
-" as guake captures the <ctrl> key and doesn't send it to vim
-let g:UltiSnipsListSnippets="<s-tab>"
+" use the mouse
+set mouse=a
 
-" display a friendly ascii-art upon opening vim
-"echo "   (>^.^<)"
+" set leader
+let mapleader = ","
+let g:mapleader = ","
 
-" CtrlP Plugin config
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
-" JSLint Plugin config
-let g:JSLintHighlightErrorLine = 0
-"JSLintToggle
+" load plugin configs
+source ~/.vim/plugins-config.vim
 
-" VimOrganizer Plugin config
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-au BufEnter *.org call org#SetOrgFileType()
-" let g:org_capture_file = '~/org_files/mycaptures.org'
-command! OrgCapture :call org#CaptureBuffer()
-command! OrgCaptureFile :call org#OpenCaptureFile()
-
-let g:org_todo_setup='TODO NEXT STARTED | DONE CANCELED'
-
-" vim-airline config
-let g:airline#extensions#tabline#enabled=1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_powerline_fonts = 1
-"let g:airline_symbols.space = "\ua0"
-
+" load custom mappings
+source ~/.vim/custom-mappings.vim
