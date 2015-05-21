@@ -4,7 +4,9 @@ nnoremap <silent> <Leader>/ :nohlsearch <CR>
 " NERDTree mapping
 nnoremap <F5> :NERDTree <CR>
 
-nnoremap <silent> <M-w> :bn <CR>
+nnoremap <silent> <Leader>p :bn<CR>
+nnoremap <silent> <Leader>o :bp<CR>
+nnoremap <silent> <Leader>bd :bd<CR>
 
 if has("gui_running")
   set guifont=Fantasque\ Sans\ Mono\ Regular\ 12

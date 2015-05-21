@@ -9,7 +9,7 @@
 # directory
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=( zsh tmux vim git emacs ssh )
+CORE_REQUIREMENTS=( zsh tmux vim git emacs ssh htop tree)
 
 is_installed() {
   req=$1
@@ -83,10 +83,10 @@ create_symlinks() {
 
 
 # install extras
+oh_my_zsh_dir="$HOME/.oh-my-zsh"
 
 install_oh_my_zsh() {
   repo_url="git://github.com/robbyrussell/oh-my-zsh.git"
-  oh_my_zsh_dir="$HOME/.oh-my-zsh"
   echo "Cloning oh-my-zsh.."
   git clone $repo_url $oh_my_zsh_dir
   source ~/.zshrc
@@ -101,6 +101,10 @@ set_zsh_default() {
 # install the core + extras..
 install() {
   if check_core_requirements; then
+    if [ ! -d $oh_my_zsh_dir ]; then
+      set_zsh_default && install_oh_my_zsh
+    fi
+    create_symlinks
     exit 0 # all requirements satisfy
   else
     install_core_requirements && create_symlinks &&\

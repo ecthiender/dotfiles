@@ -15,31 +15,6 @@ NeoBundle 'tpope/vim-surround'
 "NeoBundle 'tpope/vim-speeddating'
 "NeoBundle 'tpope/vim-characterize'
 
-"NeoBundleLazy 'tpope/vim-haml', {
-"      \ 'autoload': {
-"      \   'filetypes': ['haml']
-"      \ }
-"      \}
-"NeoBundleLazy 'tpope/vim-rails', {
-"      \ 'autoload': {
-"      \   'filetypes': ['ruby']
-"      \ }
-"      \}
-"NeoBundleLazy 'tpope/vim-rbenv', {
-"      \ 'autoload': {
-"      \   'filetypes': ['ruby']
-"      \ }
-"      \}
-"NeoBundleLazy 'tpope/vim-bundler', {
-"      \ 'autoload': {
-"      \   'filetypes': ['ruby']
-"      \ }
-"      \}
-"NeoBundleLazy 'tpope/vim-cucumber', {
-"      \ 'autoload': {
-"      \   'filetypes': ['cucumber']
-"      \ }
-"      \}
 "NeoBundleLazy 'tpope/vim-dispatch', {
 "      \ 'autoload': {
 "      \   'commands': ['Start', 'Dispatch']
@@ -47,11 +22,9 @@ NeoBundle 'tpope/vim-surround'
 "      \}
 "
 
-" Other Plugins {{{2
 "NeoBundle 'kana/vim-vspec'
 NeoBundle 'kien/ctrlp.vim'
 "NeoBundle 'gregsexton/gitv'
-"NeoBundle 'ap/vim-css-color'
 "NeoBundle 'chrisbra/NrrwRgn'
 " NeoBundle 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
 NeoBundle 'SirVer/ultisnips'
@@ -59,29 +32,45 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 
-"NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'MarcWeber/ultisnips'
-"NeoBundle 'AndrewRadev/splitjoin.vim'
-" NeoBundle 'Keithbsmiley/investigate.vim'
+" Fast and Easy Find and Replace Across Multiple Files
+NeoBundle 'vim-scripts/EasyGrep'
 
-" dependencies for VimOrganizer
-NeoBundle 'gregsexton/VimCalc'
-NeoBundle 'mattn/calendar-vim'
-NeoBundle 'vim-scripts/utl.vim'
-NeoBundle 'jean/NrrwRgn'
+"NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'MarcWeber/ultisnips'
+"NeoBundle 'AndrewRadev/splitjoin.vim'
+"NeoBundle 'Keithbsmiley/investigate.vim'
+
 " VimOrganizer - org mode for vim
-NeoBundle 'hsitz/VimOrganizer'
+NeoBundle 'hsitz/VimOrganizer', {
+      \     'depends': [
+      \       'gregsexton/VimCalc',
+      \       'mattn/calendar-vim',
+      \       'vim-scripts/utl.vim',
+      \       'jean/NrrwRgn'
+      \     ]}
 
 NeoBundle 'csexton/trailertrash.vim'
-NeoBundle 'vim-scripts/Flake8-vim'
 NeoBundle 'bling/vim-airline'
-"NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'leshill/vim-json'
 "NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-
 NeoBundle 'ryanss/vim-hackernews'
+NeoBundle 'klen/python-mode'
+"NeoBundle 'skammer/vim-css-color'
+NeoBundle 'ap/vim-css-color'
+
+NeoBundleLazy 'chase/vim-ansible-yaml', {
+      \ 'autoload': {
+      \   'filetypes': ['yaml', 'yml']
+      \ }
+      \}
+
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
+      \ 'autoload': {
+      \   'filetypes': ['tex']
+      \ }
+      \}
 
 "NeoBundleLazy 'dahu/vimple', {
 "      \ 'autoload': {
@@ -144,6 +133,12 @@ NeoBundle 'ryanss/vim-hackernews'
 "      \   'filetypes': ['jade']
 "      \ }
 "      \}
+"
+"NeoBundleLazy 'pangloss/vim-javascript', {
+"      \ 'autoload': {
+"      \   'filetypes': ['javascript']
+"      \ }
+"      \}
 "NeoBundleLazy 'marijnh/tern_for_vim', {
 "      \ 'build' : {
 "      \   'unix': 'npm install'
@@ -152,37 +147,25 @@ NeoBundle 'ryanss/vim-hackernews'
 "      \   'filetypes': ['javascript']
 "      \ }
 "      \}
+
 "NeoBundleLazy 'slim-template/vim-slim', {
 "      \ 'autoload': {
 "      \   'filetypes': ['slim']
 "      \ }
 "      \}
-"NeoBundleLazy 'pangloss/vim-javascript', {
-"      \ 'autoload': {
-"      \   'filetypes': ['javascript']
-"      \ }
-"      \}
+
 "NeoBundleLazy 'kchmck/vim-coffee-script', {
 "      \ 'autoload': {
 "      \   'filetypes': ['coffee']
 "      \ }
 "      \}
-"NeoBundleLazy 'astashov/vim-ruby-debugger', {
-"      \ 'autoload': {
-"      \   'filetypes': ['ruby']
-"      \ }
-"      \}
+
 "NeoBundleLazy 'guns/xterm-color-table.vim', {
 "      \ 'autoload': {
 "      \   'commands': ['XtermColorTable']
 "      \ }
 "      \}
-"NeoBundleLazy 'nelstrom/vim-textobj-rubyblock', {
-"      \ 'depends': 'kana/vim-textobj-user',
-"      \ 'autoload': {
-"      \   'filetypes': ['ruby']
-"      \ }
-"      \}
+
 "NeoBundleLazy 'PeterRincker/vim-argumentative', {
 "      \ 'autoload': {
 "      \   'mappings': [

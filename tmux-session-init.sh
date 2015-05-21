@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # tmux session initialisation script
 
 SESSION=$1
@@ -12,7 +12,7 @@ window1=
 
 tmux has-session -t $SESSION > /dev/null
 
-if [[ $? -eq 0 ]]
+if [ $? -eq 0 ]
 then
   echo "Session exists\n"
   tmux attach-session -t $SESSION

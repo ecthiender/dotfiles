@@ -35,7 +35,7 @@ alias p4='ping 8.8.4.4'
 alias sshx3='ssh -l ecthiender 88.198.36.219 -v' # mothership.in
 #alias sshx3='mosh 88.198.36.219'
 alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
-alias ssh-sky='ssh -l badol 10.0.0.10 -v'
+#alias ssh-sky='ssh -l badol 10.0.0.10 -v'
 #alias sshvagrant='ssh -l vagrant 10.1.1.201 -v'
 
 # use following rsync options always
@@ -49,7 +49,9 @@ alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
 alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
 alias tmx='sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
-alias updateSW='sudo apt-get update && sudo apt-get dist-upgrade'
+alias updatesys='sudo apt-get update && sudo apt-get dist-upgrade'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
 
 alias ..='cd ..'
 alias ...='cd ../..'

@@ -18,7 +18,10 @@ let g:ctrlp_cmd = 'CtrlP'
 " VimOrganizer Plugin config
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org call org#SetOrgFileType()
+
 " let g:org_capture_file = '~/org_files/mycaptures.org'
+let g:org_command_for_emacsclient = 'emacsclient'
+
 command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 
@@ -28,12 +31,23 @@ let g:ft_ignore_pat = '\.org' " VimOrganizer setting.
 
 
 " vim-airline config
-let g:airline#extensions#tabline#enabled=1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts = 1
+let g:airline_theme='luna'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = 'nightly_fox'
 "let g:airline_symbols.space = "\ua0"
 
 " latex-box config;
 let g:LatexBox_latexmk_options = "-pvc pdfps"
+
+" Pymode configs
+let g:pymode_folding = 0
+let g:pymode_rope_complete_on_dot = 0
+
+" NerdTree config
+let NERDTreeIgnore = ['.pyc']

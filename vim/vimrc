@@ -1,4 +1,5 @@
 " This is a collection over time, from dotfiles from various sources
+" - Anon Ray (ecthiender) <rayanon004@gmail.com>
 
 
 " core vim settings and config
@@ -14,6 +15,7 @@ source ~/.vim/neobundle-init.vim
 
 filetype plugin indent on " Enable filetype detection
 
+" turn syntax highlighting on
 syntax on
 
 set wildmenu "Turn on Wild menu
@@ -31,11 +33,15 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 %retab
+
 "set smarttab
 "set autoindent
 "set smartindent
+
+" text should break to new line after 79 char
 set textwidth=79
 set formatoptions+=t
+
 "set foldmethod=indent
 
 set magic "Set magic on for regex
@@ -47,12 +53,16 @@ set laststatus=2  " Always show status line
 " Omnicompletion
 set omnifunc=syntaxcomplete#Complete
 
+" use 256 terminal colors
 set t_Co=256
 
+" background theme and colorscheme
+"set background=dark
+"colorscheme jellybeans
 set background=dark
-colorscheme jellybeans
+colorscheme solarized 
 
-set cmdheight=2 "The commandbar height
+set cmdheight=1 "The commandbar height
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -70,11 +80,38 @@ set title
 " turn off all error bells and visual bells
 set noerrorbells
 set visualbell t_vb=
-
 autocmd GUIEnter * set visualbell t_vb=
 
 " use the mouse
 set mouse=a
+
+"Save when losing focus
+set autowriteall " Auto-save files when switching buffers or leaving vim.
+au FocusLost * silent! :wa
+au TabLeave * silent! :wa
+
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
+
+set hidden " Allow un-saved buffers in background
+set showmatch " set show matching parenthesis
+set noshowmatch "stop it from matching the previous bracket by going back to it
+
+"highlight current line
+set cursorline
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+"disable Esc
+"inoremap <esc> <nop>
+
+"Better Exit from insert mode
+"inoremap jk <Esc>
+"inoremap kj <Esc>
+
+"Fix those pesky situations where you edit & need sudo to save
+cmap w!! w !sudo tee % >/dev/null
 
 " set leader
 let mapleader = ","
