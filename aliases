@@ -3,10 +3,8 @@
 # also automate some of your mundane taks.
 # ecthiender <rayanon@riseup.net>
 
-# enable color support of ls and also add handy aliases
-alias ls='ls --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto'
+# enable color support of ls
+alias ls='ls --color'
 
 # some more ls aliases
 alias ll='ls -alFh'
@@ -29,14 +27,7 @@ alias v='vim '
 #alias tunnelwebserver='ssh ubuntu@107.23.10.141 -gNR 3334:localhost:80 -v -o exitonforwardfailure=yes'
 
 alias p8='ping 8.8.8.8'
-alias p4='ping 8.8.4.4'
 #alias vnstatmts='vnstat -i ppp0 -d'
-
-alias sshx3='ssh -l ecthiender 88.198.36.219 -v' # mothership.in
-#alias sshx3='mosh 88.198.36.219'
-alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
-#alias ssh-sky='ssh -l badol 10.0.0.10 -v'
-#alias sshvagrant='ssh -l vagrant 10.1.1.201 -v'
 
 # use following rsync options always
 alias rsync='rsync --progress --partial --verbose --recursive --copy-links --copy-dirlinks -h'
@@ -44,30 +35,47 @@ alias rsync='rsync --progress --partial --verbose --recursive --copy-links --cop
 # turn laptop monitor off - debian
 alias screenoff='xset dpms force off'
 
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+
+# mv and cp are always verbose
+alias mv='mv -v'
+alias cp='cp -v'
+
+alias mocp='mocp -T moca_theme'
+alias mtr='mtr -t'
+alias postgres='sudo -u postgres psql'
+alias p='ipython'
+
+# not an alias but a shell function to augment docker to delete all
+# containers, running and stopped, at one go!
+docker() {
+  if [[ $@ == "rm all" ]]; then
+    command docker rm `docker ps --no-trunc -qa`
+  else
+    command docker $@
+  fi
+}
+
+
+### very much my system/environment/work specific aliases ###
+
+alias sshx3='ssh -l ecthiender 88.198.36.219 -v' # mothership.in
+#alias sshx3='mosh 88.198.36.219'
+alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
+
 # aliases for custom scripts
 alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
 alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
 alias tmx='sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
-alias updatesys='sudo apt-get update && sudo apt-get dist-upgrade'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-# mv and cp are always verbose
-alias mv='mv -v'
-alias cp='cp -v'
-
-alias mocp='mocp -T red_theme'
-alias mtr='mtr -t'
-alias postgres='sudo -u postgres psql'
-alias p='ipython'
+# alias for gnome app scaffold
+alias gas='bash $HOME/codeyard/gnome-app-scaffold/gas.sh'
 
 # Not aliases but variables used frequently in shell
 server=$HOME'/server/www'
-swt=$server'/SWeeTWeb/platform'
+swt='~/work/servelots/SWeeTWeb/platform'
 swtmkr=$swt'/SwtMaker'
 swtr=$swtmkr'/webapps/swtr'
 swtstore=$swt'/SwtStore/sweet-web-engine'
@@ -81,3 +89,8 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 # command
 unset MANPATH #delete if you already modified MANPATH elsewhere in your config
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# set kubectl binary in ~/work/pangaea/kubectl to PATH
+PATH="${HOME}/work/bin:$PATH"
+
+

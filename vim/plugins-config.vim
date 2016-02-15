@@ -10,6 +10,7 @@ let g:UltiSnipsListSnippets="<s-tab>"
 " CtrlP Plugin config
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|venv)|(\.(swp|ico|git|svn|hg|ropeproject))$'
 
 " JSLint Plugin config
 "let g:JSLintHighlightErrorLine = 0
@@ -35,7 +36,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+"let g:airline_theme='luna'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:tmuxline_powerline_separators = 0

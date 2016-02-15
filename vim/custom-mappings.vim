@@ -9,7 +9,7 @@ nnoremap <silent> <Leader>o :bp<CR>
 nnoremap <silent> <Leader>bd :bd<CR>
 
 if has("gui_running")
-  set guifont=Fantasque\ Sans\ Mono\ Regular\ 12
+  set guifont=Hack\ 13
   set background=dark
   colorscheme jellybeans
 endif

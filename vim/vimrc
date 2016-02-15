@@ -20,6 +20,8 @@ syntax on
 
 set wildmenu "Turn on Wild menu
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc
+
 set autoread "Set to auto read when a file is changed from the outside
 
 set hlsearch "highlight pattern when searching
@@ -57,10 +59,11 @@ set omnifunc=syntaxcomplete#Complete
 set t_Co=256
 
 " background theme and colorscheme
+set background=light
+colorscheme jellybeans
+"colorscheme swamplight
 "set background=dark
-"colorscheme jellybeans
-set background=dark
-colorscheme solarized 
+"colorscheme solarized
 
 set cmdheight=1 "The commandbar height
 

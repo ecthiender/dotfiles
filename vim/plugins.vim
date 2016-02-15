@@ -72,6 +72,8 @@ NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
       \ }
       \}
 
+NeoBundle 'dag/vim2hs'
+
 "NeoBundleLazy 'dahu/vimple', {
 "      \ 'autoload': {
 "      \   'commands': ['View']
