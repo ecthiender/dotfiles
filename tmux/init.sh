@@ -1,6 +1,10 @@
 #!/bin/bash
 # tmux session initialisation script
 
+# Make sure locale is UTF-8
+locale=$(echo "$LANG" | cut -d '.' -f 1)
+export LC_ALL="$locale.UTF-8"
+
 SESSION=$1
 if [ -z "$SESSION" ]
 then

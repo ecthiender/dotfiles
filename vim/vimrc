@@ -59,7 +59,7 @@ set omnifunc=syntaxcomplete#Complete
 set t_Co=256
 
 " background theme and colorscheme
-set background=light
+set background=dark
 colorscheme jellybeans
 "colorscheme swamplight
 "set background=dark

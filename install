@@ -2,7 +2,7 @@
 
 # Script to install dotfiles and setup related environ
 # Anon Ray <rayanon@riseup.net>
-# BSD License
+# BSD-3-Clause License
 
 # Check if zsh, tmux, vim, git are installed. If not install them.
 # Create symlinks from files inside this repo to config file in user's home
@@ -76,7 +76,8 @@ create_symlinks() {
   ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
   ln -sf ~/dotfiles/zshrc ~/.zshrc
   ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
-  ln -sf ~/dotfiles/tmux-session-init.sh ~/.tmux-session-init.sh
+  ln -sf ~/dotfiles/tmux/init.sh ~/.tmux-session-init.sh
+  ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig
   ln -sf ~/dotfiles/aliases ~/.aliases
 }

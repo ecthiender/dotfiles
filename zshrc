@@ -66,12 +66,13 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -87,3 +88,4 @@ if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
 
+/usr/bin/setxkbmap -option "ctrl:swapcaps"

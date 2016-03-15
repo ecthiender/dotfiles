@@ -55,7 +55,7 @@ NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'leshill/vim-json'
 "NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'ryanss/vim-hackernews'
+"NeoBundle 'ryanss/vim-hackernews'
 NeoBundle 'klen/python-mode'
 "NeoBundle 'skammer/vim-css-color'
 NeoBundle 'ap/vim-css-color'
@@ -130,12 +130,12 @@ NeoBundle 'dag/vim2hs'
 "      \   'filetypes': ['scala']
 "      \ }
 "      \}
-"NeoBundleLazy 'digitaltoad/vim-jade', {
-"      \ 'autoload': {
-"      \   'filetypes': ['jade']
-"      \ }
-"      \}
-"
+NeoBundleLazy 'digitaltoad/vim-pug', {
+      \ 'autoload': {
+      \   'filetypes': ['jade', 'pug']
+      \ }
+      \}
+
 "NeoBundleLazy 'pangloss/vim-javascript', {
 "      \ 'autoload': {
 "      \   'filetypes': ['javascript']

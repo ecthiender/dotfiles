@@ -37,11 +37,22 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_powerline_fonts = 1
 "let g:airline_theme='luna'
-let g:airline_theme='bubblegum'
+let g:airline_theme='jellybeans'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_preset = 'nightly_fox'
+"let g:tmuxline_powerline_separators = 0
+"let g:tmuxline_preset = 'full'
+let g:tmuxline_preset = {
+  \'a': '#S',
+  \'b': '',
+  \'c': '',
+  \'win': '#I #W',
+  \'cwin': '#I #W',
+  \'x': [
+          \'⇊ #(uptime | cut -d " " -f 12 | cut -d "," -f 1)',
+          \'#(~/dotfiles/tmux/segments/weather.sh)'],
+  \'y': '%a %d %b',
+  \'z': '#H'}
 "let g:airline_symbols.space = "\ua0"
 
 " latex-box config;
