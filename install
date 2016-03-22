@@ -9,7 +9,7 @@
 # directory
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=( zsh tmux vim git emacs ssh htop tree)
+CORE_REQUIREMENTS=(zsh tmux vim git emacs ssh htop tree)
 
 is_installed() {
   req=$1
@@ -45,10 +45,10 @@ install_core_requirements() {
   # TODO: add arch
   if $(is_installed apt-get); then # apt based distro
     package_manager="apt-get"
-  else
-    if $(is_installed yum); then # yum based distro
+  elif $(is_installed yum); then # yum based distro
       package_manager="yum"
-    fi
+  elif $(is_installed pacman); then # arch linux
+      package_manager="pacman"
   fi
   if [ -z "$package_manager" ]; then
     echo "Oops! Could not find any known package manager!"
@@ -65,9 +65,14 @@ install_core_requirements() {
     exit 0
   fi
 
-  echo "sudo $package_manager install -y ${packages[@]}"
-  # System-wide installation; use sudo
-  sudo $package_manager install -y ${packages[@]}
+  if [ $package_manager == "pacman" ]; then
+    echo "sudo pacman -S ${packages[@]}"
+    sudo pacman -S --noconfirm ${packages[@]}
+  else
+    echo "sudo $package_manager install -y ${packages[@]}"
+    # System-wide installation; use sudo
+    sudo $package_manager install -y ${packages[@]}
+  fi
 }
 
 create_symlinks() {
@@ -75,7 +80,7 @@ create_symlinks() {
   ln -sf ~/dotfiles/vim ~/.vim
   ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
   ln -sf ~/dotfiles/zshrc ~/.zshrc
-  ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
+  ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
   ln -sf ~/dotfiles/tmux/init.sh ~/.tmux-session-init.sh
   ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig
@@ -105,7 +110,7 @@ install() {
     if [ ! -d $oh_my_zsh_dir ]; then
       set_zsh_default && install_oh_my_zsh
     fi
-    create_symlinks
+    create_symlinks && set_zsh_default
     exit 0 # all requirements satisfy
   else
     install_core_requirements && create_symlinks &&\

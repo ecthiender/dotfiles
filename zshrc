@@ -89,3 +89,8 @@ if [ -f ~/.aliases ]; then
 fi
 
 /usr/bin/setxkbmap -option "ctrl:swapcaps"
+
+# Load gcloud rc file
+if [ -f ~/.gcloudrc ]; then
+  source ~/.gcloudrc
+fi

@@ -39,7 +39,7 @@ TMUX_POWERLINE_SEG_WEATHER_LOCATION="2295386"
 
 run_segment() {
 	__process_settings
-	local tmp_file="./weather_yahoo.txt"
+	local tmp_file="/tmp/weather_yahoo.txt"
 	local weather
 	case "$TMUX_POWERLINE_SEG_WEATHER_DATA_PROVIDER" in
 		"yahoo") weather=$(__yahoo_weather) ;;

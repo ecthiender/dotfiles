@@ -51,7 +51,7 @@ let g:tmuxline_preset = {
   \'x': [
           \'⇊ #(uptime | cut -d " " -f 12 | cut -d "," -f 1)',
           \'#(~/dotfiles/tmux/segments/weather.sh)'],
-  \'y': '%a %d %b',
+  \'y': '%a %d %b %R',
   \'z': '#H'}
 "let g:airline_symbols.space = "\ua0"
 
