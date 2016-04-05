@@ -35,7 +35,7 @@ TMUX_POWERLINE_SEG_WEATHER_GREP="${TMUX_POWERLINE_SEG_WEATHER_GREP_DEFAULT}"
 # 3. Copy the last numbers in that URL. e.g. "http://weather.yahoo.com/united-states/california/newport-beach-12796587/" has the numbers "12796587"
 # Kolkata - 2295386
 # Bangalore - 2295420
-TMUX_POWERLINE_SEG_WEATHER_LOCATION="2295386"
+TMUX_POWERLINE_SEG_WEATHER_LOCATION="2295420"
 
 run_segment() {
 	__process_settings
@@ -88,7 +88,7 @@ __yahoo_weather() {
 	fi
 
 	if [ -z "$degree" ]; then
-		weather_data=$(curl --max-time 4 -s "http://weather.yahooapis.com/forecastrss?w=${TMUX_POWERLINE_SEG_WEATHER_LOCATION}&u=${TMUX_POWERLINE_SEG_WEATHER_UNIT}")
+		weather_data=$(curl --max-time 4 -s "http://xml.weather.yahoo.com/forecastrss?w=${TMUX_POWERLINE_SEG_WEATHER_LOCATION}&u=${TMUX_POWERLINE_SEG_WEATHER_UNIT}")
 		if [ "$?" -eq "0" ]; then
 			error=$(echo "$weather_data" | grep "problem_cause\|DOCTYPE");
 			if [ -n "$error" ]; then
