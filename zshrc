@@ -94,3 +94,8 @@ fi
 if [ -f ~/.gcloudrc ]; then
   source ~/.gcloudrc
 fi
+
+# Load my custom shell funcs
+if [ -f ~/dotfiles/shellfuncs.sh ]; then
+  source ~/dotfiles/shellfuncs.sh
+fi

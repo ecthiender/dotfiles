@@ -47,17 +47,6 @@ alias mtr='mtr -t'
 alias postgres='sudo -u postgres psql'
 alias p='ipython'
 
-# not an alias but a shell function to augment docker to delete all
-# containers, running and stopped, at one go!
-docker() {
-  if [[ $@ == "rm all" ]]; then
-    command docker rm `docker ps --no-trunc -qa`
-  else
-    command docker $@
-  fi
-}
-
-
 ### very much my system/environment/work specific aliases ###
 
 alias sshx3='ssh -l ecthiender 88.198.36.219 -v' # mothership.in
@@ -92,5 +81,3 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # set kubectl binary in ~/work/pangaea/kubectl to PATH
 PATH="${HOME}/work/bin:$PATH"
-
-
