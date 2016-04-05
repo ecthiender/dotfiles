@@ -1,14 +1,69 @@
 " this is the list of all the vim plugins I use
 
+" plugins I'm familiar with and use regularly
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'klen/python-mode'
+NeoBundle 'csexton/trailertrash.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'leshill/vim-json'
+NeoBundle 'ap/vim-css-color'
+" Vim haskell
+NeoBundle 'dag/vim2hs'
+" Smart buffer closing
+NeoBundle 'cespare/vim-sbd'
+
+
+" Lazy load these plugins
+
+" VimOrganizer - org mode for vim
+NeoBundle 'hsitz/VimOrganizer', {
+      \     'depends': [
+      \       'gregsexton/VimCalc',
+      \       'mattn/calendar-vim',
+      \       'vim-scripts/utl.vim',
+      \       'jean/NrrwRgn'
+      \     ]}
+
+" jade plugin
+NeoBundleLazy 'digitaltoad/vim-pug', {
+      \ 'autoload': {
+      \   'filetypes': ['jade', 'pug']
+      \ }
+      \}
+
+" Yaml support
+NeoBundleLazy 'chase/vim-ansible-yaml', {
+      \ 'autoload': {
+      \   'filetypes': ['yaml', 'yml']
+      \ }
+      \}
+
+" LaTeX support
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
+      \ 'autoload': {
+      \   'filetypes': ['tex']
+      \ }
+      \}
+
+
+" don't use much - should explore
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'SirVer/ultisnips'
+" Fast and Easy Find and Replace Across Multiple Files
+NeoBundle 'vim-scripts/EasyGrep'
+
 
 "NeoBundle 'tpope/vim-rake'
 "NeoBundle 'tpope/vim-eunuch'
 "NeoBundle 'tpope/vim-repeat'
 "NeoBundle 'tpope/vim-abolish'
 "NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'tpope/vim-sensible'
-NeoBundle 'tpope/vim-surround'
 "NeoBundle 'tpope/vim-obsession'
 "NeoBundle 'tpope/vim-scriptease'
 "NeoBundle 'tpope/vim-unimpaired'
@@ -23,56 +78,20 @@ NeoBundle 'tpope/vim-surround'
 "
 
 "NeoBundle 'kana/vim-vspec'
-NeoBundle 'kien/ctrlp.vim'
 "NeoBundle 'gregsexton/gitv'
 "NeoBundle 'chrisbra/NrrwRgn'
-" NeoBundle 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
-NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
 "NeoBundle 'honza/vim-snippets'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-
-" Fast and Easy Find and Replace Across Multiple Files
-NeoBundle 'vim-scripts/EasyGrep'
+"NeoBundle 'jistr/vim-nerdtree-tabs'
 
 "NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'MarcWeber/ultisnips'
 "NeoBundle 'AndrewRadev/splitjoin.vim'
 "NeoBundle 'Keithbsmiley/investigate.vim'
 
-" VimOrganizer - org mode for vim
-NeoBundle 'hsitz/VimOrganizer', {
-      \     'depends': [
-      \       'gregsexton/VimCalc',
-      \       'mattn/calendar-vim',
-      \       'vim-scripts/utl.vim',
-      \       'jean/NrrwRgn'
-      \     ]}
-
-NeoBundle 'csexton/trailertrash.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'leshill/vim-json'
 "NeoBundle 'Valloric/YouCompleteMe'
 "NeoBundle 'ryanss/vim-hackernews'
-NeoBundle 'klen/python-mode'
 "NeoBundle 'skammer/vim-css-color'
-NeoBundle 'ap/vim-css-color'
-
-NeoBundleLazy 'chase/vim-ansible-yaml', {
-      \ 'autoload': {
-      \   'filetypes': ['yaml', 'yml']
-      \ }
-      \}
-
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
-      \ 'autoload': {
-      \   'filetypes': ['tex']
-      \ }
-      \}
-
-NeoBundle 'dag/vim2hs'
 
 "NeoBundleLazy 'dahu/vimple', {
 "      \ 'autoload': {
@@ -130,11 +149,6 @@ NeoBundle 'dag/vim2hs'
 "      \   'filetypes': ['scala']
 "      \ }
 "      \}
-NeoBundleLazy 'digitaltoad/vim-pug', {
-      \ 'autoload': {
-      \   'filetypes': ['jade', 'pug']
-      \ }
-      \}
 
 "NeoBundleLazy 'pangloss/vim-javascript', {
 "      \ 'autoload': {
