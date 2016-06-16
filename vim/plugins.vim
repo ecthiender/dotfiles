@@ -2,15 +2,15 @@
 
 " plugins I'm familiar with and use regularly
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'klen/python-mode'
+Plug 'scrooloose/nerdtree', {'on': 'NerdTreeToggle'}
+Plug 'klen/python-mode', {'for': 'python'}
 Plug 'csexton/trailertrash.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'leshill/vim-json'
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', {'for': ['css', 'less', 'scss']}
 " Vim haskell
 Plug 'dag/vim2hs'
 " Smart buffer closing
