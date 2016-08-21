@@ -70,7 +70,8 @@ set cmdheight=1 "The commandbar height
 " No backups, swap files etc!
 set noswapfile
 set nobackup
-
+" undo file that lets you re-undo after closing the file
+set undofile
 if exists("&undodir")
   set undodir=~/.vim/undo
 endif
