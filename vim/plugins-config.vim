@@ -44,15 +44,15 @@ let g:airline#extensions#tmuxline#enabled = 0
 "let g:tmuxline_preset = 'full'
 let g:tmuxline_preset = {
   \'a': '#S',
-  \'b': '',
+  \'b': '#H',
   \'c': '',
   \'win': '#I #W',
   \'cwin': '#I #W',
   \'x': [
-          \'#(~/dotfiles/tmux/segments/sysload.sh)',
-          \'#(~/dotfiles/tmux/segments/weather.sh)'],
-  \'y': '%a %d %b %R',
-  \'z': '#H'}
+          \'#(~/dotfiles/tmux/segments/speed.sh wlp3s0)',
+          \'#(~/dotfiles/tmux/segments/sysload.sh)'],
+  \'y': '#(~/dotfiles/tmux/segments/weather.sh)',
+  \'z': '%I:%M %p'}
 "let g:airline_symbols.space = "\ua0"
 
 " latex-box config;

@@ -88,7 +88,8 @@ __yahoo_weather() {
 	fi
 
 	if [ -z "$degree" ]; then
-		weather_data=$(curl --max-time 4 -s "http://xml.weather.yahoo.com/forecastrss?w=${TMUX_POWERLINE_SEG_WEATHER_LOCATION}&u=${TMUX_POWERLINE_SEG_WEATHER_UNIT}")
+    WEATHER_URL="https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid=${TMUX_POWERLINE_SEG_WEATHER_LOCATION}%20AND%20u=%22${TMUX_POWERLINE_SEG_WEATHER_UNIT}%22"
+		weather_data=$(curl --max-time 4 -s $WEATHER_URL)
 		if [ "$?" -eq "0" ]; then
 			error=$(echo "$weather_data" | grep "problem_cause\|DOCTYPE");
 			if [ -n "$error" ]; then
@@ -164,9 +165,10 @@ __get_condition_symbol() {
 			#echo "﹌"
 			#echo "〰"
 			;;
-		"windy" | "fair/windy")
+		"windy" | "fair/windy" | "breezy")
 			#echo "⚐"
 			echo "⚑"
+			#echo "🍃"
 			;;
 		"clear" | "fair" | "cold")
 			hourmin=$(date +%H%M)

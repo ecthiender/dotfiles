@@ -43,6 +43,7 @@ set softtabstop=2
 " text should break to new line after 79 char
 set textwidth=79
 set formatoptions+=t
+set nu
 
 "set foldmethod=indent
 
@@ -119,6 +120,8 @@ cmap w!! w !sudo tee % >/dev/null
 " set leader
 let mapleader = ","
 let g:mapleader = ","
+
+set cm=blowfish2
 
 
 " load plugin configs

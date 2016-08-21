@@ -88,6 +88,7 @@ if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
 
+# Swap ctrl and capslock keys - maybe move to a lower runlevel script?
 /usr/bin/setxkbmap -option "ctrl:swapcaps"
 
 # Load gcloud rc file

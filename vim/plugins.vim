@@ -10,14 +10,22 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'leshill/vim-json'
-NeoBundle 'ap/vim-css-color'
 " Vim haskell
 NeoBundle 'dag/vim2hs'
+NeoBundle 'bitc/vim-hdevtools'
+
 " Smart buffer closing
 NeoBundle 'cespare/vim-sbd'
 
 
 " Lazy load these plugins
+"
+" Render colors in CSS files
+NeoBundleLazy 'ap/vim-css-color', {
+     \ 'autoload': {
+      \   'filetypes': ['css']
+      \ }
+      \}
 
 " VimOrganizer - org mode for vim
 NeoBundle 'hsitz/VimOrganizer', {
@@ -49,6 +57,18 @@ NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
       \ }
       \}
 
+" JSX syntax and indentation
+NeoBundleLazy 'mxw/vim-jsx', {
+      \ 'autoload': {
+      \   'filetypes': ['js', 'jsx']
+      \ }
+      \}
+
+NeoBundleLazy 'mustache/vim-mustache-handlebars', {
+      \ 'autoload': {
+      \   'filetypes': ['mustache']
+      \ }
+      \}
 
 " don't use much - should explore
 NeoBundle 'tpope/vim-fugitive'

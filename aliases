@@ -56,18 +56,13 @@ alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
 # aliases for custom scripts
 alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
 alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
-alias tmx='sh $HOME/.tmux-session-init.sh'
+alias tmx='TERM="screen-256color-bce" sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
-
 # alias for gnome app scaffold
 alias gas='bash $HOME/codeyard/gnome-app-scaffold/gas.sh'
 
-# Not aliases but variables used frequently in shell
-server=$HOME'/server/www'
-swt='~/work/servelots/SWeeTWeb/platform'
-swtmkr=$swt'/SwtMaker'
-swtr=$swtmkr'/webapps/swtr'
-swtstore=$swt'/SwtStore/sweet-web-engine'
+
+### Setup the PATH - for various package managers ###
 
 # Install npm packages globally without sudo on OS X and Linux
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
@@ -79,5 +74,4 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH #delete if you already modified MANPATH elsewhere in your config
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-# set kubectl binary in ~/work/pangaea/kubectl to PATH
-PATH="${HOME}/work/bin:$PATH"
+PATH="${HOME}/.cabal/bin:$PATH"
