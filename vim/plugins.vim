@@ -1,181 +1,159 @@
 " this is the list of all the vim plugins I use
 
 " plugins I'm familiar with and use regularly
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'klen/python-mode'
-NeoBundle 'csexton/trailertrash.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'leshill/vim-json'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree', {'on': 'NerdTreeToggle'}
+Plug 'klen/python-mode', {'for': 'python'}
+Plug 'csexton/trailertrash.vim'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'leshill/vim-json'
+Plug 'ap/vim-css-color', {'for': ['css', 'less', 'scss']}
 " Vim haskell
-NeoBundle 'dag/vim2hs'
-NeoBundle 'bitc/vim-hdevtools'
-
+Plug 'dag/vim2hs'
+"Plug 'bitc/vim-hdevtools'
 " Smart buffer closing
-NeoBundle 'cespare/vim-sbd'
+Plug 'cespare/vim-sbd'
 
 
 " Lazy load these plugins
 "
 " Render colors in CSS files
-NeoBundleLazy 'ap/vim-css-color', {
-     \ 'autoload': {
-      \   'filetypes': ['css']
-      \ }
-      \}
+Plug 'ap/vim-css-color'
+", {
+"     \ 'autoload': {
+"      \   'filetypes': ['css']
+"      \ }
+"      \}
 
 " VimOrganizer - org mode for vim
-NeoBundle 'hsitz/VimOrganizer', {
-      \     'depends': [
-      \       'gregsexton/VimCalc',
-      \       'mattn/calendar-vim',
-      \       'vim-scripts/utl.vim',
-      \       'jean/NrrwRgn'
-      \     ]}
+Plug 'hsitz/VimOrganizer'
+", {
+"      \     'depends': [
+"      \       'gregsexton/VimCalc',
+"      \       'mattn/calendar-vim',
+"      \       'vim-scripts/utl.vim',
+"      \       'jean/NrrwRgn'
+"      \     ]}
+"
 
 " jade plugin
-NeoBundleLazy 'digitaltoad/vim-pug', {
-      \ 'autoload': {
-      \   'filetypes': ['jade', 'pug']
-      \ }
-      \}
+Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 
 " Yaml support
-NeoBundleLazy 'chase/vim-ansible-yaml', {
-      \ 'autoload': {
-      \   'filetypes': ['yaml', 'yml']
-      \ }
-      \}
+Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'yml']}
 
 " LaTeX support
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
-      \ 'autoload': {
-      \   'filetypes': ['tex']
-      \ }
-      \}
-
-" JSX syntax and indentation
-NeoBundleLazy 'mxw/vim-jsx', {
-      \ 'autoload': {
-      \   'filetypes': ['js', 'jsx']
-      \ }
-      \}
-
-NeoBundleLazy 'mustache/vim-mustache-handlebars', {
-      \ 'autoload': {
-      \   'filetypes': ['mustache']
-      \ }
-      \}
+Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex']}
 
 " don't use much - should explore
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'SirVer/ultisnips'
 " Fast and Easy Find and Replace Across Multiple Files
-NeoBundle 'vim-scripts/EasyGrep'
+Plug 'vim-scripts/EasyGrep'
 
 
-"NeoBundle 'tpope/vim-rake'
-"NeoBundle 'tpope/vim-eunuch'
-"NeoBundle 'tpope/vim-repeat'
-"NeoBundle 'tpope/vim-abolish'
-"NeoBundle 'tpope/vim-endwise'
-"NeoBundle 'tpope/vim-sensible'
-"NeoBundle 'tpope/vim-obsession'
-"NeoBundle 'tpope/vim-scriptease'
-"NeoBundle 'tpope/vim-unimpaired'
-"NeoBundle 'tpope/vim-speeddating'
-"NeoBundle 'tpope/vim-characterize'
+"Plug 'tpope/vim-rake'
+"Plug 'tpope/vim-eunuch'
+"Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-abolish'
+"Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-sensible'
+"Plug 'tpope/vim-obsession'
+"Plug 'tpope/vim-scriptease'
+"Plug 'tpope/vim-unimpaired'
+"Plug 'tpope/vim-speeddating'
+"Plug 'tpope/vim-characterize'
 
-"NeoBundleLazy 'tpope/vim-dispatch', {
+"PlugLazy 'tpope/vim-dispatch', {
 "      \ 'autoload': {
 "      \   'commands': ['Start', 'Dispatch']
 "      \ }
 "      \}
 "
 
-"NeoBundle 'kana/vim-vspec'
-"NeoBundle 'gregsexton/gitv'
-"NeoBundle 'chrisbra/NrrwRgn'
-"NeoBundle 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
-"NeoBundle 'honza/vim-snippets'
-"NeoBundle 'jistr/vim-nerdtree-tabs'
+"Plug 'kana/vim-vspec'
+"Plug 'gregsexton/gitv'
+"Plug 'chrisbra/NrrwRgn'
+"Plug 'garbas/vim-snipmate', {'depends': ['MarcWeber/vim-addon-mw-utils', 'tomtom/tlib_vim']}
+"Plug 'honza/vim-snippets'
+"Plug 'jistr/vim-nerdtree-tabs'
 
-"NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'MarcWeber/ultisnips'
-"NeoBundle 'AndrewRadev/splitjoin.vim'
-"NeoBundle 'Keithbsmiley/investigate.vim'
+"Plug 'scrooloose/syntastic'
+"Plug 'MarcWeber/ultisnips'
+"Plug 'AndrewRadev/splitjoin.vim'
+"Plug 'Keithbsmiley/investigate.vim'
 
-"NeoBundle 'Valloric/YouCompleteMe'
-"NeoBundle 'ryanss/vim-hackernews'
-"NeoBundle 'skammer/vim-css-color'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'ryanss/vim-hackernews'
+"Plug 'skammer/vim-css-color'
 
-"NeoBundleLazy 'dahu/vimple', {
+"PlugLazy 'dahu/vimple', {
 "      \ 'autoload': {
 "      \   'commands': ['View']
 "      \ }
 "      \}
-"NeoBundleLazy 'sjl/gundo.vim', {
+"PlugLazy 'sjl/gundo.vim', {
 "      \ 'autoload': {
 "      \   'commands': ['GundoToggle']
 "      \ }
 "      \}
-"NeoBundleLazy 'mattn/gist-vim', {
+"PlugLazy 'mattn/gist-vim', {
 "      \ 'depends': 'mattn/webapi-vim',
 "      \ 'autoload': {
 "      \   'commands': ['Gist']
 "      \ }
 "      \}
-"NeoBundleLazy 'godlygeek/tabular', {
+"PlugLazy 'godlygeek/tabular', {
 "      \ 'autoload': {
 "      \   'commands': ['Tabular']
 "      \ }
 "      \}
-"NeoBundleLazy 'wavded/vim-stylus', {
+"PlugLazy 'wavded/vim-stylus', {
 "      \ 'autoload': {
 "      \   'filetypes': ['stylus']
 "      \ }
 "      \}
-"NeoBundleLazy 'groenewege/vim-less', {
+"PlugLazy 'groenewege/vim-less', {
 "      \ 'autoload': {
 "      \   'filetypes': ['less']
 "      \ }
 "      \}
-"NeoBundleLazy 'jnwhiteh/vim-golang', {
+"PlugLazy 'jnwhiteh/vim-golang', {
 "      \ 'autoload': {
 "      \   'filetypes': ['go']
 "      \ }
 "      \}
-"NeoBundleLazy 'thinca/vim-quickrun', {
+"PlugLazy 'thinca/vim-quickrun', {
 "      \ 'autoload': {
 "      \   'mappings': [['n', '<Plug>(quickrun)'], ['o', '<Plug>(quickrun-op)']]
 "      \ }
 "      \}
-"NeoBundleLazy 'tomtom/tcomment_vim', {
+"PlugLazy 'tomtom/tcomment_vim', {
 "      \ 'autoload': {
 "      \   'mappings': [['nx', 'gc', 'gcc', 'gC']]
 "      \ }
 "      \}
-"NeoBundleLazy 'bkad/CamelCaseMotion', {
+"PlugLazy 'bkad/CamelCaseMotion', {
 "      \ 'autoload': {
 "      \   'mappings': ['<Plug>CamelCaseMotion_']
 "      \ }
 "      \}
-"NeoBundleLazy 'derekwyatt/vim-scala', {
+"PlugLazy 'derekwyatt/vim-scala', {
 "      \ 'autoload': {
 "      \   'filetypes': ['scala']
 "      \ }
 "      \}
 
-"NeoBundleLazy 'pangloss/vim-javascript', {
+"PlugLazy 'pangloss/vim-javascript', {
 "      \ 'autoload': {
 "      \   'filetypes': ['javascript']
 "      \ }
 "      \}
-"NeoBundleLazy 'marijnh/tern_for_vim', {
+"PlugLazy 'marijnh/tern_for_vim', {
 "      \ 'build' : {
 "      \   'unix': 'npm install'
 "      \  },
@@ -184,25 +162,25 @@ NeoBundle 'vim-scripts/EasyGrep'
 "      \ }
 "      \}
 
-"NeoBundleLazy 'slim-template/vim-slim', {
+"PlugLazy 'slim-template/vim-slim', {
 "      \ 'autoload': {
 "      \   'filetypes': ['slim']
 "      \ }
 "      \}
 
-"NeoBundleLazy 'kchmck/vim-coffee-script', {
+"PlugLazy 'kchmck/vim-coffee-script', {
 "      \ 'autoload': {
 "      \   'filetypes': ['coffee']
 "      \ }
 "      \}
 
-"NeoBundleLazy 'guns/xterm-color-table.vim', {
+"PlugLazy 'guns/xterm-color-table.vim', {
 "      \ 'autoload': {
 "      \   'commands': ['XtermColorTable']
 "      \ }
 "      \}
 
-"NeoBundleLazy 'PeterRincker/vim-argumentative', {
+"PlugLazy 'PeterRincker/vim-argumentative', {
 "      \ 'autoload': {
 "      \   'mappings': [
 "      \    ['nxo', '[,', '],', '<,', '>,'],
@@ -212,4 +190,4 @@ NeoBundle 'vim-scripts/EasyGrep'
 "      \}
 
 " My plugins
-"NeoBundleLocal ~/code/vim_plugins
+"PlugLocal ~/code/vim_plugins
