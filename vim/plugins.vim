@@ -3,6 +3,7 @@
 " plugins I'm familiar with and use regularly
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NerdTreeToggle'}
+Plug 'scrooloose/syntastic'
 Plug 'klen/python-mode', {'for': 'python'}
 Plug 'csexton/trailertrash.vim'
 Plug 'bling/vim-airline'
@@ -11,23 +12,18 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'leshill/vim-json'
 Plug 'ap/vim-css-color', {'for': ['css', 'less', 'scss']}
+
 " Vim haskell
-Plug 'dag/vim2hs'
-"Plug 'bitc/vim-hdevtools'
+Plug 'dag/vim2hs', {'for': ['haskell']}
+"Plug 'raichoo/haskell-vim', {'for': ['haskell']}
+Plug 'bitc/vim-hdevtools'
+
 " Smart buffer closing
 Plug 'cespare/vim-sbd'
 
+Plug 'ap/vim-css-color', {'for': ['css', 'less', 'scss']}
 
-" Lazy load these plugins
 "
-" Render colors in CSS files
-Plug 'ap/vim-css-color'
-", {
-"     \ 'autoload': {
-"      \   'filetypes': ['css']
-"      \ }
-"      \}
-
 " VimOrganizer - org mode for vim
 Plug 'hsitz/VimOrganizer'
 ", {
@@ -82,7 +78,6 @@ Plug 'vim-scripts/EasyGrep'
 "Plug 'honza/vim-snippets'
 "Plug 'jistr/vim-nerdtree-tabs'
 
-"Plug 'scrooloose/syntastic'
 "Plug 'MarcWeber/ultisnips'
 "Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'Keithbsmiley/investigate.vim'

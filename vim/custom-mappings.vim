@@ -6,7 +6,8 @@ nnoremap <F5> :NERDTree <CR>
 
 nnoremap <silent> <Leader>p :bn<CR>
 nnoremap <silent> <Leader>o :bp<CR>
-nnoremap <silent> <Leader>bd :bd<CR>
+nnoremap <silent> <leader>bd :Sbd<CR>
+nnoremap <silent> <leader>bdm :Sbdm<CR>
 
 if has("gui_running")
   set guifont=Hack\ 13
