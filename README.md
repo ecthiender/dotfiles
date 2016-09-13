@@ -1,7 +1,7 @@
 # Dotfiles
 
 This is a collection of tools, configuration files, shell aliases, and scripts
-to setup my - very opinonated - working environment.
+to setup my - *very opinonated* - working environment.
 
 Mainly it has:
 
@@ -23,5 +23,9 @@ setup/config files to modify them according to your needs.
 
 Once done modifying, to install the environment, just the run the `install`
 script.
+
+```
+$ ./install.sh
+```
 
 PS: Currently, only Debian and CentOS/RHEL based distros are supported.
