@@ -39,7 +39,7 @@ Plug 'hsitz/VimOrganizer'
 Plug 'digitaltoad/vim-pug', {'for': ['jade', 'pug']}
 
 " Yaml support
-Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'yml']}
+"Plug 'chase/vim-ansible-yaml', {'for': ['yaml', 'yml']}
 
 " LaTeX support
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex']}

@@ -56,7 +56,7 @@ alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
 # aliases for custom scripts
 alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
 alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
-alias tmx='TERM="screen-256color-bce" sh $HOME/.tmux-session-init.sh'
+alias tmx='sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
 # alias for gnome app scaffold
 alias gas='bash $HOME/codeyard/gnome-app-scaffold/gas.sh'
