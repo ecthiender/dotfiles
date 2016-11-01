@@ -10,7 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="arrow"
+ZSH_THEME="arrow-custom"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -93,7 +93,7 @@ fi
 # Swap ctrl and capslock keys - maybe move to a lower runlevel script?
 /usr/bin/setxkbmap -option "ctrl:swapcaps"
 
-# Load gcloud rc file
+# Load gcloud rc file - to enable gcloud completions
 if [ -f ~/.gcloudrc ]; then
   source ~/.gcloudrc
 fi

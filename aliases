@@ -44,7 +44,7 @@ alias cp='cp -v'
 
 alias mocp='mocp -T moca_theme'
 alias mtr='mtr -t'
-alias postgres='sudo -u postgres psql'
+#alias postgres='sudo -u postgres psql'
 alias p='ipython'
 
 ### very much my system/environment/work specific aliases ###
