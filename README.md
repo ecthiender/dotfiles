@@ -25,7 +25,7 @@ Once done modifying, to install the environment, just the run the `install`
 script.
 
 ```
-$ ./install.sh
+$ ./install
 ```
 
 PS: Currently, only Arch Linux, Debian and CentOS/RHEL based distros are supported.

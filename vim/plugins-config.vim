@@ -14,7 +14,7 @@ let g:UltiSnipsListSnippets="<s-tab>"
 " ----------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|venv)|(\.(swp|ico|git|ropeproject))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|venv)|(\.(swp|swo|ico|git|ropeproject|stack))$'
 " ----------------------------
 
 
@@ -23,15 +23,11 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|venv)|(\.(swp|ico|git|ropeproje
 " ----------------------------
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufEnter *.org call org#SetOrgFileType()
-
 " let g:org_capture_file = '~/org_files/mycaptures.org'
 let g:org_command_for_emacsclient = 'emacsclient'
-
 command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
-
 let g:org_todo_setup='TODO NEXT STARTED | DONE CANCELED'
-
 let g:ft_ignore_pat = '\.org' " VimOrganizer setting.
 " ----------------------------
 
@@ -48,6 +44,7 @@ let g:airline_theme='jellybeans'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 " ----------------------------
+
 
 "---------------------------------------
 " Tmuxline conf

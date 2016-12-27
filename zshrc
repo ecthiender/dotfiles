@@ -1,6 +1,6 @@
 # use 256 colors for terminal colors
 if [[ $TERM == "xterm" ]]; then
-  export TERM="xterm-256color"
+  export TERM="screen-256color"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -50,7 +50,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract history-substring-search python virtualenv docker)
+plugins=(git extract history-substring-search python virtualenv docker archlinux web-search vi-mode nyan)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,7 +91,7 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Swap ctrl and capslock keys - maybe move to a lower runlevel script?
-/usr/bin/setxkbmap -option "ctrl:swapcaps"
+#/usr/bin/setxkbmap -option "ctrl:swapcaps"
 
 # Load gcloud rc file - to enable gcloud completions
 if [ -f ~/.gcloudrc ]; then

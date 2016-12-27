@@ -55,11 +55,14 @@ alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
 
 # aliases for custom scripts
 alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
-alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
+#alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
 alias tmx='sh $HOME/.tmux-session-init.sh'
 alias speed='zsh $HOME/codeyard/speed.sh '
 # alias for gnome app scaffold
 alias gas='bash $HOME/codeyard/gnome-app-scaffold/gas.sh'
+
+### For the FUN of it!! ###
+alias hack3r1337="find / -exec {} ';'"
 
 
 ### Setup the PATH - for various package managers ###
