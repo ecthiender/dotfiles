@@ -5,6 +5,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'csexton/trailertrash.vim'
+Plug 'scrooloose/nerdcommenter'
 
 " look and feel
 Plug 'bling/vim-airline'

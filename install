@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Script to install dotfiles and setup related environ
+# Script to install dotfiles and setup related environment.
+
 # Anon Ray <rayanon@riseup.net>
-# BSD-3-Clause License
+# BSD Licensed. See LICENSE file for more details.
+#
 
 # Check if zsh, tmux, vim, git are installed. If not install them.
 # Create symlinks from files inside this repo to config file in user's home

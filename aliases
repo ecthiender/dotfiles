@@ -1,3 +1,5 @@
+# vim: set ft=conf
+
 # Alias file which can be sourced in your favourite shell startup script
 # Aliases help you type fewer keystrokes for the commands you use the most and
 # also automate some of your mundane taks.
@@ -20,11 +22,7 @@ alias egrep='egrep --color=auto'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Set your fav editor
-alias v='vim '
-
-# ssh tunnel to do some magic!
-#alias tunnelwebserver='ssh ubuntu@107.23.10.141 -gNR 3334:localhost:80 -v -o exitonforwardfailure=yes'
+alias v='vim'
 
 alias p8='ping 8.8.8.8'
 #alias vnstatmts='vnstat -i ppp0 -d'
@@ -35,8 +33,8 @@ alias rsync='rsync --progress --partial --verbose --recursive --copy-links --cop
 # turn laptop monitor off - debian
 alias screenoff='xset dpms force off'
 
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
+#alias update='sudo apt-get update'
+#alias upgrade='sudo apt-get upgrade'
 
 # mv and cp are always verbose
 alias mv='mv -v'
@@ -49,23 +47,18 @@ alias p='ipython'
 
 ### very much my system/environment/work specific aliases ###
 
-alias sshx3='ssh -l ecthiender 88.198.36.219 -v' # mothership.in
-#alias sshx3='mosh 88.198.36.219'
-alias sshx5='ssh -l ecthiender 213.239.195.144 -v' # servelots server
-
 # aliases for custom scripts
-alias lyrics='python $HOME/codeyard/lyrics-fetcher/fetch.py' # lyrics fetcher
-#alias ddg='python $HOME/codeyard/duckduckgo/query.py' # duckduckgo query app
-alias tmx='sh $HOME/.tmux-session-init.sh'
-alias speed='zsh $HOME/codeyard/speed.sh '
-# alias for gnome app scaffold
-alias gas='bash $HOME/codeyard/gnome-app-scaffold/gas.sh'
+alias tmx='${HOME}/.tmux-session-init.sh'
 
-### For the FUN of it!! ###
-alias hack3r1337="find / -exec {} ';'"
+### Kubectl aliases ###
+alias pods='kubectl -n hasura get pods '
+alias logs='kubectl -n hasura logs'
+alias deploys='kubectl -n hasura get deploy '
+alias deployo='kubectl -n hasura get deploy -o yaml '
+alias podo='kubectl -n hasura get pod -o yaml '
+alias platform='kubectl get cm platform -n hasura -o yaml'
 
-
-### Setup the PATH - for various package managers ###
+### Setup the PATH for npm ###
 
 # Install npm packages globally without sudo on OS X and Linux
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
@@ -77,4 +70,5 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH #delete if you already modified MANPATH elsewhere in your config
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
+# Add ~/.local/bin to PATH
 PATH="${HOME}/.local/bin:$PATH"
