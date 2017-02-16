@@ -5,14 +5,13 @@ to setup my - *very opinonated* - working environment.
 
 Mainly it has:
 
-* Vim (My favourite editor)
-* Tmux (Must have - because most of my time is spent inside a terminal)
-* Zsh (The most awesome shell ever!)
+* Vim
+* Tmux
+* Zsh
 * Git, SSH
 * rsync
 * Emacs (for org-mode backend)
-* And a lot of vim plugins :)
-
+* And a lot of vim plugins
 
 # Usage
 
@@ -21,11 +20,10 @@ setup/config files to modify them according to your needs.
 
 **IMPORTANT**: Remember to edit the `gitconfig` file, to have your credentials!
 
-Once done modifying, to install the environment, just the run the `install`
-script.
+Once done modifying, to install the environment, run the `install` script:
 
-```
+```shell
 $ ./install
 ```
 
-PS: Currently, only Arch Linux, Debian and CentOS/RHEL based distros are supported.
+PS: Currently only Arch Linux, Debian and CentOS/RHEL based distros are supported.
