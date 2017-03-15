@@ -5,6 +5,8 @@
 docker() {
   if [[ $@ == "rm all" ]]; then
     command docker rm `docker ps --no-trunc -qa`
+  elif [[ $@ == "stats" ]]; then
+    command docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.PIDs}}"
   else
     command docker $@
   fi

@@ -58,12 +58,12 @@ alias deployo='kubectl -n hasura get deploy -o yaml '
 alias podo='kubectl -n hasura get pod -o yaml '
 alias platform='kubectl get cm platform -n hasura -o yaml'
 
-### Setup the PATH for npm ###
+### Setup the PATH for different tools ###
 
 # Install npm packages globally without sudo on OS X and Linux
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 NPM_PACKAGES="${HOME}/.npm-packages"
-NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
 # command
@@ -72,3 +72,7 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # Add ~/.local/bin to PATH
 PATH="${HOME}/.local/bin:$PATH"
+
+export ANDROID_HOME="${HOME}/Android/Sdk"
+PATH="${ANDROID_HOME}/tools:$PATH"
+PATH="${ANDROID_HOME}/platform-tools:$PATH"
