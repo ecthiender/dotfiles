@@ -1,12 +1,30 @@
 #!/usr/bin/zsh
 
+# Fix when the psmouse driver fucks up fucking up the touchpad
+fixmouse() {
+  sudo modprobe -r psmouse
+  sudo modprobe psmouse && sudo modprobe psmouse && sudo modprobe psmouse
+}
+
+# find out detailed disk usage of a directory
+dusage() {
+  if [[ -z "$1" ]]; then
+    echo "Prints detailed disk usage of a directory."
+    echo "Usage: dusage <directory-name>"
+  else
+    du -ah -d 1 $1 | sort -hr
+  fi
+}
+
+
 # a shell function to augment docker to delete all containers, running and
 # stopped, at one go!
 docker() {
   if [[ $@ == "rm all" ]]; then
     command docker rm `docker ps --no-trunc -qa`
   elif [[ $@ == "stats" ]]; then
-    command docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.PIDs}}"
+    command docker stats --format \
+      "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.PIDs}}"
   else
     command docker $@
   fi

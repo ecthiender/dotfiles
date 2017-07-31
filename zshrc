@@ -1,6 +1,6 @@
 # use 256 colors for terminal colors
 if [[ $TERM == "xterm" ]]; then
-  export TERM="screen-256color"
+  export TERM="gnome-256color"
 fi
 
 # Path to your oh-my-zsh installation.

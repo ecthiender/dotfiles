@@ -12,6 +12,7 @@ if [ -z "$SESSION" ]
 then
   SESSION="work"
 fi
+
 workspace1="$server"
 workspace2="$server"
 window1=

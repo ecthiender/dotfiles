@@ -57,6 +57,7 @@ alias deploys='kubectl -n hasura get deploy '
 alias deployo='kubectl -n hasura get deploy -o yaml '
 alias podo='kubectl -n hasura get pod -o yaml '
 alias platform='kubectl get cm platform -n hasura -o yaml'
+alias describe='kubectl -n hasura describe pods '
 
 ### Setup the PATH for different tools ###
 
