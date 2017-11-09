@@ -34,3 +34,4 @@ $tmux new-session -d -s $SESSION
 
 $tmux select-window -t $SESSION:1
 $tmux attach-session -t $SESSION
+export TERM="xterm-256color"

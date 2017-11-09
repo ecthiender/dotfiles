@@ -57,7 +57,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export GOROOT=$HOME/.local/go
+export GOPATH=~/work/hasura/go
+export PATH=$PATH:$HOME/.local/go/bin:/usr/local/bin:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -103,3 +105,7 @@ fi
 if [ -f ~/dotfiles/shellfuncs.sh ]; then
   source ~/dotfiles/shellfuncs.sh
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
