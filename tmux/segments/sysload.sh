@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "⇊ $(cat /proc/loadavg | cut -d " " -f 1)"
+echo "⇊ $(cat /proc/loadavg | awk '{print $1}')"

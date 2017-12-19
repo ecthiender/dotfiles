@@ -71,7 +71,7 @@ export PATH=$PATH:$HOME/.local/go/bin:/usr/local/bin:$GOPATH/bin
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

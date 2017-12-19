@@ -47,3 +47,11 @@ fix_zsh_history() {
   strings ~/.zsh_history_bad > ~/.zsh_history
   fc -R ~/.zsh_history
 }
+
+urldecode() {
+  if [[ -z "$1" ]]; then
+    echo "ERROR: URL required"
+    exit 1;
+  fi
+  echo "$1" | awk -niord '{printf RT?$0chr("0x"substr(RT,2)):$0}' RS=%..
+}

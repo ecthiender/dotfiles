@@ -11,7 +11,7 @@
 # directory
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=(zsh tmux vim git emacs ssh htop tree)
+CORE_REQUIREMENTS=(zsh tmux vim git emacs ssh htop tree nvim)
 
 is_installed() {
   req=$1

@@ -2,7 +2,7 @@
 	name = Anon Ray
 	email = rayanon004@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 [color]
 	branch = auto
 	diff = auto
