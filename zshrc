@@ -11,7 +11,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="arrow-custom"
-#ZSH_THEME="miloshadzic"
+# ZSH_THEME="miloshadzic"
+# ZSH_THEME="wedisagree"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,15 +52,15 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract history-substring-search python virtualenv docker archlinux web-search vi-mode)
+plugins=(git extract history-substring-search python virtualenv docker archlinux web-search vi-mode kubectl cabal stack)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export GOROOT=$HOME/.local/go
-export GOPATH=~/work/hasura/go
-export PATH=$PATH:$HOME/.local/go/bin:/usr/local/bin:$GOPATH/bin
+#export GOROOT=$HOME/.local/go
+#export GOPATH=~/work/hasura/go
+#export PATH=$PATH:$HOME/.local/go/bin:/usr/local/bin:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -77,7 +78,7 @@ export EDITOR='nvim'
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
+#export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -106,6 +107,7 @@ if [ -f ~/dotfiles/shellfuncs.sh ]; then
   source ~/dotfiles/shellfuncs.sh
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Source .zshenv which sets PATH
+if [ -f ~/.zshenv ]; then
+  source ~/.zshenv
+fi

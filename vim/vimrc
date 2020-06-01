@@ -39,8 +39,8 @@ set softtabstop=2
 "set autoindent
 "set smartindent
 
-" text should break to new line after 79 char
-set textwidth=79
+" text should break to new line after ~79~ 100 (time to upgrade!) char
+set textwidth=100
 set formatoptions+=t
 set nu
 

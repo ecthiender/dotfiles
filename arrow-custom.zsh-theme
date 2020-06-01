@@ -11,7 +11,7 @@ MODE_INDICATOR="%{$fg_bold[yellow]%}\u2318%{$reset_color%}"
 PROMPT='%{$fg[yellow]%}%c ➤ %{$reset_color%}'
 
 #RPROMPT='%{$fg[$NCOLOR]%}%p $(git_prompt_info)%{$reset_color%}'
-RPROMPT='$(vi_mode_prompt_info)%{$reset_color%} $(git_prompt_info)%{$reset_color%} $(k8s_prompt_info)%{$reset_color%}'
+RPROMPT='$(vi_mode_prompt_info)%{$reset_color%} $(git_prompt_info)%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}\uE0A0%{$fg[cyan]%}:"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

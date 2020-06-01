@@ -25,8 +25,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # alias v='vim'
 # time to move on
 alias v='nvim'
+# time to move on to emacs as well (trying spacemacs!)
+alias ec='emacs -mm . &'
+alias vmd='npx vmd '
+alias match="awk 'FNR==NR{a[$1];next}($1 in a){print}' file2 file1"
 
 alias p8='ping 8.8.8.8'
+alias p1='ping 1.1.1.1'
+alias pp='ping wikipedia.org'
 #alias vnstatmts='vnstat -i ppp0 -d'
 
 # use following rsync options always
@@ -35,48 +41,33 @@ alias rsync='rsync --progress --partial --verbose --recursive --copy-links --cop
 # turn laptop monitor off - debian
 alias screenoff='xset dpms force off'
 
-#alias update='sudo apt-get update'
-#alias upgrade='sudo apt-get upgrade'
-
 # mv and cp are always verbose
 alias mv='mv -v'
 alias cp='cp -v'
 
-alias mocp='mocp -T moca_theme'
-alias mtr='mtr -t'
-#alias postgres='sudo -u postgres psql'
-alias p='ipython'
+# git aliases
+alias git_history='git log --graph --all --simplify-by-decoration'
 
 ### very much my system/environment/work specific aliases ###
+alias mocp='mocp -T moca_theme'
+alias mtr='mtr -t'
+alias p='ipython'
+alias b='stack build --fast --ghc-options -j'
+alias cb='cabal build --ghc-options -j'
+alias crun='cabal new-run'
+alias xclip='xclip -sel clip'
+alias dc='docker-compose '
+alias gen-random='cat /dev/urandom | head -c 256 | base64'
+alias ki="killall intero"
 
 # aliases for custom scripts
 alias tmx='${HOME}/.tmux-session-init.sh'
 
 ### Kubectl aliases ###
 alias pods='kubectl -n hasura get pods '
-alias logs='kubectl -n hasura logs'
+alias klogs='kubectl -n hasura logs'
 alias deploys='kubectl -n hasura get deploy '
 alias deployo='kubectl -n hasura get deploy -o yaml '
 alias podo='kubectl -n hasura get pod -o yaml '
 alias platform='kubectl get cm platform -n hasura -o yaml'
 alias describe='kubectl -n hasura describe pods '
-alias gen-random='cat /dev/urandom | head -c 30 | base64'
-
-### Setup the PATH for different tools ###
-
-# Install npm packages globally without sudo on OS X and Linux
-# https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
-#NPM_PACKAGES="${HOME}/.npm-packages"
-#NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
-#PATH="$NPM_PACKAGES/bin:$PATH"
-## Unset manpath so we can inherit from /etc/manpath via the `manpath`
-## command
-#unset MANPATH #delete if you already modified MANPATH elsewhere in your config
-#MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-# Add ~/.local/bin to PATH
-PATH="${HOME}/.local/bin:$PATH"
-
-#export ANDROID_HOME="${HOME}/Android/Sdk"
-#PATH="${ANDROID_HOME}/tools:$PATH"
-#PATH="${ANDROID_HOME}/platform-tools:$PATH"
