@@ -53,12 +53,11 @@ alias mocp='mocp -T moca_theme'
 alias mtr='mtr -t'
 alias p='ipython'
 alias b='stack build --fast --ghc-options -j'
-alias cb='cabal build --ghc-options -j'
-alias crun='cabal new-run'
+alias cb='cabal build -j'
+alias crun='cabal run'
 alias xclip='xclip -sel clip'
 alias dc='docker-compose '
 alias gen-random='cat /dev/urandom | head -c 256 | base64'
-alias ki="killall intero"
 
 # aliases for custom scripts
 alias tmx='${HOME}/.tmux-session-init.sh'

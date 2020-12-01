@@ -9,3 +9,5 @@
 	interactive = auto
 	status = auto
 	ui = true
+[pull]
+	rebase = false

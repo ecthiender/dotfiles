@@ -12,8 +12,7 @@ export DISABLE_AUTO_TITLE="true"
 # export TERM="xterm-256color"
 
 # load the default sessions I always need
-tmuxp load -2 -y pers work pro
-
+tmuxp load -2 -y pers work
 
 # Below is the older implementation using tmux directly. This has been then superseded by tmuxp
 #!/bin/bash
