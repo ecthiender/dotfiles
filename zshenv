@@ -20,7 +20,7 @@ PATH="$LOCALBIN:$PATH"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# setup path for cabal and ghcup - required by spacemacs
+# setup path for cabal and ghcup
 # CABAL="$HOME/.cabal/bin"
 # GHCUP="$HOME/.ghcup/bin"
 # PATH="$GHCUP:$CABAL:$PATH"

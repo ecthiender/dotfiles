@@ -22,10 +22,7 @@ alias egrep='egrep --color=auto'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# alias v='vim'
-# time to move on
 alias v='nvim -u ~/.vimrc'
-# time to move on to emacs as well (trying spacemacs!)
 alias ec='emacs -mm . &'
 alias vmd='npx vmd '
 alias match="awk 'FNR==NR{a[$1];next}($1 in a){print}' file2 file1"

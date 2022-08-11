@@ -94,7 +94,7 @@ create_symlinks() {
   ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig
   ln -sf ~/dotfiles/aliases ~/.aliases
-  ln -sf ~/dotfiles/spacemacs/spacemacs ~/.spacemacs
+  ln -sf ~/dotfiles/doom.d ~/.doom.d
 }
 
 
