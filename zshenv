@@ -1,20 +1,14 @@
 ### Setup the PATH for different tools ###
 
+# Add ~/.local/bin to PATH
+LOCALBIN="${HOME}/.local/bin"
+PATH="$LOCALBIN:$PATH"
+
 # Install npm packages globally without sudo on OS X and Linux
 # https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 # https://docs.npmjs.com/getting-started/fixing-npm-permissions
 NPM_PACKAGES="${HOME}/.npm-global"
-#NPM_PACKAGES="${HOME}/.npm-packages"
-#NODE_PATH="${NPM_PACKAGES}/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
-## Unset manpath so we can inherit from /etc/manpath via the `manpath`
-## command
-#unset MANPATH #delete if you already modified MANPATH elsewhere in your config
-#MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-
-# Add ~/.local/bin to PATH
-LOCALBIN="${HOME}/.local/bin"
-PATH="$LOCALBIN:$PATH"
 
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -26,8 +20,8 @@ PATH="$LOCALBIN:$PATH"
 # PATH="$GHCUP:$CABAL:$PATH"
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
-export GOROOT="$HOME/.local/bin/golang"
-export ANDROID_SDK="/home/ecthiender/Android/Sdk"
+export GOROOT="${HOME}/.local/bin/golang"
+export ANDROID_SDK="${HOME}/Android/Sdk"
 
 # for flutter https://docs.flutter.dev/get-started/install/linux
 FLUTTER_TOOLS="${HOME}/codeyard/flutter-installation/flutter/bin"
