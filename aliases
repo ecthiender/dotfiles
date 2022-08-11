@@ -24,7 +24,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # alias v='vim'
 # time to move on
-alias v='nvim'
+alias v='nvim -u ~/.vimrc'
 # time to move on to emacs as well (trying spacemacs!)
 alias ec='emacs -mm . &'
 alias vmd='npx vmd '

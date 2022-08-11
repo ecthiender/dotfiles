@@ -1,14 +1,16 @@
 #!/bin/bash
-
-# Script to install dotfiles and setup related environment.
-
-# Anon Ray <rayanon@riseup.net>
+# (c) Anon Ray <rayanon@riseup.net>
 # BSD Licensed. See LICENSE file for more details.
-#
+
+# Script to bootstrap my environment.
+# This installs required tools and sets up various dotfiles. This also assumes
+# it is a barebones Linux machine with bash available.
 
 # Check if zsh, tmux, vim, git are installed. If not install them.
 # Create symlinks from files inside this repo to config file in user's home
 # directory
+
+set -e
 
 # These are the requirements for my environ
 CORE_REQUIREMENTS=(zsh tmux vim git emacs ssh htop tree nvim)
@@ -23,6 +25,10 @@ is_installed() {
   else
     return 1
   fi
+}
+
+find_linux_distro() {
+  distrib_id=$(cat /etc/*-release | uniq -u | grep -Po 'DISTRIB_ID=\K.*')
 }
 
 check_core_requirements() {
@@ -107,8 +113,7 @@ set_zsh_default() {
   chsh -s $(which zsh)
 }
 
-
-# install the core + extras..
+# main install function
 install() {
   if check_core_requirements; then
     if [ ! -d $oh_my_zsh_dir ]; then
@@ -117,8 +122,10 @@ install() {
     create_symlinks && set_zsh_default
     exit 0 # all requirements satisfy
   else
-    install_core_requirements && create_symlinks &&\
-      set_zsh_default && install_oh_my_zsh
+    install_core_requirements \
+      && create_symlinks \
+      && set_zsh_default \
+      && install_oh_my_zsh
 
     echo "Done"
     exit 0

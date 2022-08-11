@@ -6,11 +6,16 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# load pure: https://github.com/sindresorhus/pure#install
+fpath+=$HOME/.zsh/pure
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="arrow-custom"
+#ZSH_THEME="arrow-custom"
+#ZSH_THEME="arrow"
+ZSH_THEME=""
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="wedisagree"
 
@@ -52,7 +57,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract history-substring-search python virtualenv docker archlinux web-search vi-mode kubectl cabal stack)
+plugins=(git extract history-substring-search python docker archlinux web-search kubectl cabal stack)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,11 +108,19 @@ if [ -f ~/.gcloudrc ]; then
 fi
 
 # Load my custom shell funcs
-if [ -f ~/dotfiles/shellfuncs.sh ]; then
-  source ~/dotfiles/shellfuncs.sh
+if [ -f ~/dotfiles/functions.sh ]; then
+  source ~/dotfiles/functions.sh
 fi
 
 # Source .zshenv which sets PATH
 if [ -f ~/.zshenv ]; then
   source ~/.zshenv
 fi
+
+# activate pure: https://github.com/sindresorhus/pure#getting-started
+autoload -U promptinit; promptinit
+
+zstyle :prompt:pure:path color cyan
+zstyle :prompt:pure:git:stash show yes
+
+prompt pure

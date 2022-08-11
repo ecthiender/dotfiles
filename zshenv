@@ -16,9 +16,9 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 LOCALBIN="${HOME}/.local/bin"
 PATH="$LOCALBIN:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # setup path for cabal and ghcup - required by spacemacs
 # CABAL="$HOME/.cabal/bin"
@@ -27,6 +27,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 export GOROOT="$HOME/.local/bin/golang"
+export ANDROID_SDK="/home/ecthiender/Android/Sdk"
+
+# for flutter https://docs.flutter.dev/get-started/install/linux
+FLUTTER_TOOLS="${HOME}/codeyard/flutter-installation/flutter/bin"
+PATH="$PATH:$FLUTTER_TOOLS"
+export CHROME_EXECUTABLE="/usr/bin/chromium"
 
 # finally export this PATH
 export PATH

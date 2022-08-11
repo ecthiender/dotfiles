@@ -1,4 +1,5 @@
 #!/usr/bin/zsh
+# This file contains various shell helper functions for productivity and convenience
 
 # Fix the nameservers in /etc/resolv.conf to be sane ones, and not some ISPs
 fixnameservers() {
@@ -23,10 +24,12 @@ dusage() {
   fi
 }
 
+# commenting this out, because pure zsh theme doesnt work
+# see: https://github.com/sindresorhus/pure/issues/487#issuecomment-520242592
 # overload/overwrite cat to run ls if the argument is a directory
-cat() {
-  test -f "$1" && command cat "$1" || ls "$1"
-}
+#cat() {
+#  test -f "$1" && command cat "$1" || ls "$1"
+#}
 
 # a shell function to augment docker to delete all containers, running and
 # stopped, at one go!
@@ -64,3 +67,34 @@ urldecode() {
   fi
   echo "$1" | awk -niord '{printf RT?$0chr("0x"substr(RT,2)):$0}' RS=%..
 }
+
+# Update/Upgrade a bunch of my tools that I use
+upgrade_tools() {
+  echo ">> Updating pure zsh theme.."
+  (cd ~/.zsh/pure && git pull origin main)
+  echo ">> Upgrading doom emacs.."
+  ~/.emacs.d/bin/doom upgrade
+  echo ">> Updating oh-my-zsh.."
+  omz update
+}
+
+startdockerpg() {
+  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:13-3.1
+}
+
+startdockerredis() {
+  docker run -d -p 6379:6379 --name localredis redis:6.2
+}
+
+stacknewmy() {
+  if [[ -z "$1" ]]; then
+    echo "ERROR: project name required. Usage: stacknewmy <project-name>"
+    exit 1;
+  fi
+  stack new --bare "$1" ~/.stack/templates/anonray.hsfiles
+}
+
+# Source another script which has non-public helper functions
+if [ -f "$PWD/functions_private.sh" ]; then
+  source "$PWD/functions_private.sh"
+fi

@@ -126,7 +126,7 @@ set cm=blowfish2
 
 
 " load plugin configs
-source ~/.vim/plugins-config.vim
+"source ~/.vim/plugins-config.vim
 
 " load custom mappings
-source ~/.vim/custom-mappings.vim
+"source ~/.vim/custom-mappings.vim
