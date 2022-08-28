@@ -94,6 +94,13 @@ stacknewmy() {
   stack new --bare "$1" ~/.stack/templates/anonray.hsfiles
 }
 
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do
+    time $shell -i -c exit
+  done
+}
+
 # Source another script which has non-public helper functions
 if [ -f "$PWD/functions_private.sh" ]; then
   source "$PWD/functions_private.sh"
