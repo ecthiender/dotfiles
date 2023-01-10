@@ -1,6 +1,9 @@
 #!/usr/bin/zsh
 # This file contains various shell helper functions for productivity and convenience
 
+# https://unix.stackexchange.com/a/115431
+THIS_SCRIPT_DIR=${0:a:h}
+
 # Fix the nameservers in /etc/resolv.conf to be sane ones, and not some ISPs
 fixnameservers() {
   sudo su -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
@@ -79,7 +82,7 @@ upgrade_tools() {
 }
 
 startdockerpg() {
-  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:13-3.1
+  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:14-3.3
 }
 
 startdockerredis() {
@@ -102,6 +105,6 @@ timezsh() {
 }
 
 # Source another script which has non-public helper functions
-if [ -f "$PWD/functions_private.sh" ]; then
-  source "$PWD/functions_private.sh"
+if [ -f "$THIS_SCRIPT_DIR/functions_private.sh" ]; then
+  source "$THIS_SCRIPT_DIR/functions_private.sh"
 fi
