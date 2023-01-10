@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Start a command with a given .env file
+
+env_file="$1"
+cmd="$2"
