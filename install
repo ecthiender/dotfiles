@@ -13,7 +13,7 @@
 set -e
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=(zsh tmux vim git emacs ssh htop tree nvim)
+CORE_REQUIREMENTS=(zsh tmux vim git emacs ssh htop tree neovim)
 
 is_installed() {
   req=$1
@@ -100,12 +100,26 @@ create_symlinks() {
 
 # install extras
 oh_my_zsh_dir="$HOME/.oh-my-zsh"
+zsh_pure_dir="$HOME/.zsh/pure"
 
-install_oh_my_zsh() {
-  repo_url="git://github.com/robbyrussell/oh-my-zsh.git"
+install_zsh_extras() {
+  repo_url="https://github.com/ohmyzsh/ohmyzsh.git"
   echo "Cloning oh-my-zsh.."
   git clone $repo_url $oh_my_zsh_dir
+
+  pure_repo_url="https://github.com/sindresorhus/pure.git"
+  echo "Cloning zsh-pure theme.."
+  git clone $pure_repo_url $zsh_pure_dir
+
   source ~/.zshrc
+}
+
+install_doom_emacs() {
+  doom_repo_url="https://github.com/doomemacs/doomemacs"
+  echo "Cloning doom emacs..."
+  git clone --depth 1 "$doom_repo_url" "~/.emacs.d"
+  echo "Setting up doom emacs..."
+  ~/.emacs.d/bin/doom sync
 }
 
 set_zsh_default() {
@@ -117,15 +131,16 @@ set_zsh_default() {
 install() {
   if check_core_requirements; then
     if [ ! -d $oh_my_zsh_dir ]; then
-      set_zsh_default && install_oh_my_zsh
+      set_zsh_default && install_zsh_extras
     fi
     create_symlinks && set_zsh_default
     exit 0 # all requirements satisfy
   else
     install_core_requirements \
       && create_symlinks \
+      && install_doom_emacs \
       && set_zsh_default \
-      && install_oh_my_zsh
+      && install_zsh_extras
 
     echo "Done"
     exit 0

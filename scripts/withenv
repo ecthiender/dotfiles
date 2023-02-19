@@ -1,6 +1,34 @@
 #!/bin/bash
 
 # Start a command with a given .env file
+# Checkout the sample.env file for the format
+
+usage() {
+  echo ""
+  echo "Usage: withenv {ENV_FILEPATH} {COMMAND}"
+  echo "Example: withenv .env node index.js"
+  echo "Checkout the sample.env file for the format"
+}
+
+log() {
+  local msg="$1"
+  local now=$(date -Is)
+  echo "[withenv][$now] $msg"
+}
 
 env_file="$1"
-cmd="$2"
+cmd="${*:2}" # rest of the arguments after the first
+
+if [[ -z "$env_file" || -z "$cmd" ]]; then
+  usage
+  exit 1
+fi
+
+# spawn a new shell for the exports
+(
+while read -r env; do
+  log "exporting $env"
+  export "${env?}"
+done <"$env_file";
+${cmd}
+)
