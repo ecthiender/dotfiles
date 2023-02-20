@@ -1,0 +1,6 @@
+session_name: pers
+start_directory: /home/ecthiender/codeyard
+windows:
+- window_name: ''
+  focus: 'true'
+- window_name: ''

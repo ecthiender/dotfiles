@@ -1,0 +1,30 @@
+session_name: pro
+start_directory: /home/ecthiender/work/hasura/graphql-engine-pro
+
+windows:
+# 1. the main window where we build/compile the code and run it. Also use this to check git status
+# etc.
+- window_name: pro-server
+  start_directory: server
+  focus: true
+  options:
+    automatic-rename: 'off'
+
+# 2. this window is used exclusively to run things against the server, like curl and other scripts
+# which act as clients
+- window_name: pro-server-clients
+  start_directory: server
+  options:
+    automatic-rename: 'off'
+
+# 3. this window is used exclusively to run lux
+- window_name: lux
+  start_directory: /home/ecthiender/work/hasura/lux
+  options:
+    automatic-rename: 'off'
+
+# 4. this window is used for running console builds etc.
+- window_name: pro-console
+  start_directory: console
+  options:
+    automatic-rename: 'off'
