@@ -82,11 +82,11 @@ upgrade_tools() {
 }
 
 startdockerpg() {
-  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:14-3.3
+  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:15-3.3
 }
 
 startdockerredis() {
-  docker run -d -p 6379:6379 --name localredis redis:6.2
+  docker run -d -p 6379:6379 --name localredis redis:7.0-alpine
 }
 
 stacknewmy() {

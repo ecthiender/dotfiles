@@ -118,14 +118,15 @@ install_zsh_extras() {
 install_doom_emacs() {
   doom_repo_url="https://github.com/doomemacs/doomemacs"
   echo "Cloning doom emacs..."
-  git clone --depth 1 "$doom_repo_url" "~/.emacs.d"
+  git clone --depth 1 "$doom_repo_url" "$HOME/.emacs.d"
   echo "Setting up doom emacs..."
-  ~/.emacs.d/bin/doom sync
+  "$HOME/.emacs.d/bin/doom install"
+  "$HOME/.emacs.d/bin/doom sync"
 }
 
 set_zsh_default() {
   echo "Setting zsh to be default shell.."
-  chsh -s $(which zsh)
+  #chsh -s $(which zsh)
 }
 
 # main install function
