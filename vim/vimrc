@@ -32,7 +32,7 @@ set textwidth=100
 
 set formatoptions+=t
 set nu
-set foldmethod=indent
+"set foldmethod=indent
 
 set magic "Set magic on for regex
 set ignorecase "ignore case when searching
