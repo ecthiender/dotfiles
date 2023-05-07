@@ -3,7 +3,7 @@ start_directory: /home/ecthiender/work/hasura/graphql-engine-mono
 windows:
 # 1. the main window where we build/compile the Pro code and run it. Also use this to check git status
 # etc.
-- window_name: hge-pro-server
+- window_name: hge-pro
   start_directory: pro/server
   focus: true
   options:
@@ -13,7 +13,6 @@ windows:
 # etc.
 - window_name: hge-server
   start_directory: server
-  focus: false
   options:
     automatic-rename: 'off'
 
@@ -38,7 +37,7 @@ windows:
     automatic-rename: 'off'
 
 # 6. this window is used for running console builds etc.
-- window_name: hge-pro-console
-  start_directory: pro/console
+- window_name: hge-console
+  start_directory: frontend
   options:
     automatic-rename: 'off'

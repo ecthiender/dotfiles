@@ -1,14 +1,14 @@
 #!/bin/bash
-# (c) Anon Ray <rayanon@riseup.net>
-# BSD Licensed. See LICENSE file for more details.
 
-# Script to bootstrap my environment.
-# This installs required tools and sets up various dotfiles. This also assumes
-# it is a barebones Linux machine with bash available.
+# Script to bootstrap my dev environment.  This installs required tools and sets
+# up various dotfiles. This also assumes it is a barebones Linux machine with
+# bash available.
 
-# Check if zsh, tmux, vim, git are installed. If not install them.
-# Create symlinks from files inside this repo to config file in user's home
-# directory
+# It does the following -
+# - Install required software packages for development (e.g. zsh, tmux, vim, git
+# etc.)
+# - Create symlinks. The standard config files/dotfiles in $HOME are symlinked
+# to files in this # repo.
 
 set -e
 
@@ -90,7 +90,6 @@ create_symlinks() {
   ln -sf ~/dotfiles/zshrc ~/.zshrc
   ln -sf ~/dotfiles/zshenv ~/.zshenv
   ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-  ln -sf ~/dotfiles/tmux/init.sh ~/.tmux-session-init.sh
   ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
   ln -sf ~/dotfiles/tmux/tmuxp ~/.tmuxp
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig

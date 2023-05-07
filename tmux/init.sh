@@ -1,7 +1,5 @@
 #!/bin/bash
-# Author: Anon Ray <rayanon@riseup.net>
-# Date: Feb 18 2020 (14:20)
-# Last modified: Feb 18 2020 (14:20)
+# Script to start my tmux sessions. This is the entrypoint to my workflow
 
 # export required env vars
 
