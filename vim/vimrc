@@ -1,26 +1,14 @@
 " This is a collection over time, from dotfiles from various sources
 " - Anon Ray (ecthiender) <rayanon004@gmail.com>
 
-
 " core vim settings and config
-
 set nocompatible " be - IMproved!
-
 set encoding=utf8 " because the whole world isn't english
-
-
-" init the runtime/package manager neobundle
-source ~/.vim/plug-init.vim
-
 filetype plugin indent on " Enable filetype detection
-
 " turn syntax highlighting on
 syntax on
-
 set wildmenu "Turn on Wild menu
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.pyc
-
 set autoread "Set to auto read when a file is changed from the outside
 
 set hlsearch "highlight pattern when searching
@@ -39,12 +27,12 @@ set softtabstop=2
 "set autoindent
 "set smartindent
 
-" text should break to new line after ~79~ 100 (time to upgrade!) char
+" text should break to new line after 100 chars
 set textwidth=100
+
 set formatoptions+=t
 set nu
-
-"set foldmethod=indent
+set foldmethod=indent
 
 set magic "Set magic on for regex
 set ignorecase "ignore case when searching
@@ -122,11 +110,4 @@ cmap w!! w !sudo tee % >/dev/null
 let mapleader = ","
 let g:mapleader = ","
 
-set cm=blowfish2
-
-
-" load plugin configs
-"source ~/.vim/plugins-config.vim
-
-" load custom mappings
-"source ~/.vim/custom-mappings.vim
+source ~/.vim/custom-mappings.vim
