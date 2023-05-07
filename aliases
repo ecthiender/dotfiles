@@ -57,7 +57,7 @@ alias dc='docker-compose '
 alias gen-random='cat /dev/urandom | head -c 256 | base64'
 
 # aliases for custom scripts
-alias tmx='${HOME}/.tmux-session-init.sh'
+alias tmx='${HOME}/dotfiles/tmux/init.sh'
 
 ### Kubectl aliases ###
 alias pods='kubectl -n hasura get pods '

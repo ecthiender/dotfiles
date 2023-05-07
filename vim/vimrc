@@ -60,7 +60,7 @@ set t_Co=256
 
 " background theme and colorscheme
 set background=dark
-colorscheme jellybeans
+colorscheme habamax
 "colorscheme swamplight
 "set background=dark
 "colorscheme solarized
