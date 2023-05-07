@@ -87,13 +87,13 @@ create_symlinks() {
   echo "Creating symlinks for necessary files.."
   ln -sf ~/dotfiles/vim ~/.vim
   ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
-  ln -sf ~/dotfiles/zshrc ~/.zshrc
-  ln -sf ~/dotfiles/zshenv ~/.zshenv
+  ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
+  ln -sf ~/dotfiles/zsh/zshenv ~/.zshenv
   ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
   ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
   ln -sf ~/dotfiles/tmux/tmuxp ~/.tmuxp
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig
-  ln -sf ~/dotfiles/aliases ~/.aliases
+  ln -sf ~/dotfiles/shell/aliases ~/.aliases
   ln -sf ~/dotfiles/doom.d ~/.doom.d
 }
 
@@ -148,4 +148,5 @@ install() {
   fi
 }
 
-install
+#install
+create_symlinks

@@ -105,6 +105,6 @@ timezsh() {
 }
 
 # Source another script which has non-public helper functions
-if [ -f "$THIS_SCRIPT_DIR/functions_private.sh" ]; then
-  source "$THIS_SCRIPT_DIR/functions_private.sh"
+if [ -f "$THIS_SCRIPT_DIR/private/functions.sh" ]; then
+  source "$THIS_SCRIPT_DIR/private/functions.sh"
 fi

@@ -10,4 +10,4 @@ vim/plugs
 vim/swaps
 *.spl
 # shell helpers containing non-public/sensitive info
-functions_private.sh
+shell/private/

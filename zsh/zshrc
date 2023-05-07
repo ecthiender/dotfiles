@@ -109,8 +109,8 @@ if [ -f ~/.gcloudrc ]; then
 fi
 
 # Load my custom shell funcs
-if [ -f ~/dotfiles/functions.sh ]; then
-  source ~/dotfiles/functions.sh
+if [ -f ~/dotfiles/shell/functions.sh ]; then
+  source ~/dotfiles/shell/functions.sh
 fi
 
 # Source .zshenv which sets PATH
