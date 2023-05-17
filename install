@@ -148,5 +148,4 @@ install() {
   fi
 }
 
-#install
-create_symlinks
+install

@@ -121,7 +121,9 @@ fi
 # activate pure: https://github.com/sindresorhus/pure#getting-started
 autoload -U promptinit; promptinit
 
-zstyle :prompt:pure:path color cyan
+# customize the default colors of pure prompt
+zstyle :prompt:pure:path color 024
+zstyle :prompt:pure:prompt:success color green
 zstyle :prompt:pure:git:stash show yes
 
 prompt pure
