@@ -95,6 +95,8 @@ create_symlinks() {
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig
   ln -sf ~/dotfiles/shell/aliases ~/.aliases
   ln -sf ~/dotfiles/doom.d ~/.doom.d
+  ln -sf ~/dotfiles/stack/config.yaml ~/.stack/config.yaml
+  ln -sf ~/dotfiles/stack/anonray.hsfiles ~/.stack/templates/anonray.hsfiles
 }
 
 
