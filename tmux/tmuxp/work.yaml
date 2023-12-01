@@ -1,25 +1,23 @@
 session_name: work
-start_directory: /home/ecthiender/work/hasura/graphql-engine-mono
+start_directory: /home/ecthiender/work/hasura/
 windows:
-# 1. the main window where we build/compile the Pro code and run it. Also use this to check git status
-# etc.
-- window_name: hge-pro
-  start_directory: pro/server
+
+# 1. Main window to compile and run the code
+- window_name: v3-engine
+  start_directory: v3-engine
   focus: true
   options:
     automatic-rename: 'off'
 
-# 2. the main window where we build/compile the code and run it. Also use this to check git status
-# etc.
-- window_name: hge-server
-  start_directory: server
+# 2. Secondary window to run NDC connector(s)
+- window_name: v3-engine
+  start_directory: v3-engine
   options:
     automatic-rename: 'off'
 
-# 3. this window is used exclusively to run things against the server, like curl and other scripts
-# which act as clients
+# 3. Used exclusively to run things against the server, like curl and other scripts which act as clients
 - window_name: clients
-  start_directory: pro/server
+  start_directory: v3-engine
   options:
     automatic-rename: 'off'
 
@@ -29,15 +27,14 @@ windows:
   options:
     automatic-rename: 'off'
 
-# 5. this window is used exclusively to run python tests
-- window_name: hge-pytests
-  start_directory: server/tests-py
-  # TODO: setup pyenv here, so we don't have to activate venv manually
+# 5. v2-dev
+- window_name: v2-pro
+  start_directory: /home/ecthiender/work/hasura/graphql-engine-mono/pro/server
   options:
     automatic-rename: 'off'
 
-# 6. this window is used for running console builds etc.
-- window_name: hge-console
-  start_directory: frontend
+# 6. v2-dev
+- window_name: v2-hge
+  start_directory: /home/ecthiender/work/hasura/graphql-engine-mono/server
   options:
     automatic-rename: 'off'

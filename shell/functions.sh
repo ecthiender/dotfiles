@@ -90,11 +90,13 @@ startdockerredis() {
 }
 
 stacknewmy() {
+  (
   if [[ -z "$1" ]]; then
     echo "ERROR: project name required. Usage: stacknewmy <project-name>"
     exit 1;
   fi
   stack new --bare "$1" ~/.stack/templates/anonray.hsfiles
+  )
 }
 
 timezsh() {

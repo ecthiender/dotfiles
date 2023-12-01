@@ -110,4 +110,7 @@ cmap w!! w !sudo tee % >/dev/null
 let mapleader = ","
 let g:mapleader = ","
 
+" https://github.com/neovim/neovim/issues/6005
+set guicursor=
+
 source ~/.vim/custom-mappings.vim

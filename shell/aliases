@@ -52,8 +52,9 @@ alias p='ipython'
 alias b='stack build --fast --ghc-options -j'
 alias cb='cabal build -j'
 alias crun='cabal run'
+alias hsb='make build-all' # hasura server build
 alias xclip='xclip -sel clip'
-alias dc='docker-compose '
+alias dc='docker compose '
 alias gen-random='cat /dev/urandom | head -c 256 | base64'
 
 # aliases for custom scripts

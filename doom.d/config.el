@@ -59,7 +59,8 @@
 ;(setq haskell-stylish-on-save t)
 
 (after! dtrt-indent
-  (add-to-list 'dtrt-indent-hook-mapping-list '(typescript-mode javascript typescript-indent-level)))
+  (add-to-list 'dtrt-indent-hook-mapping-list '(typescript-mode javascript typescript-indent-level))
+  (add-to-list 'dtrt-indent-hook-mapping-list '(json-mode javascript 2)))
 
 (with-eval-after-load 'lsp-mode
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\ws\\'"))
