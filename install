@@ -13,7 +13,7 @@
 set -e
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=(zsh tmux tmuxp vim git emacs ssh htop tree neovim)
+CORE_REQUIREMENTS=(zsh tmux tmuxp vim git emacs ssh htop tree neovim alacritty)
 
 is_installed() {
   req=$1
@@ -34,7 +34,7 @@ find_linux_distro() {
 check_core_requirements() {
   for req in "${CORE_REQUIREMENTS[@]}"
   do
-    if ! $(is_installed $req); then
+    if ! $(is_installed "$req"); then
       to_install=( "${to_install[@]}" $req )
     fi
   done
@@ -68,23 +68,24 @@ install_core_requirements() {
   echo "Packages to be insalled: ${packages[@]}"
   read -p "Continue? [y/N]: "
 
-  if [ $REPLY != "y" ]; then
+  if [ "$REPLY" != "y" ]; then
     echo "Installation aborted."
     exit 0
   fi
 
-  if [ $package_manager == "pacman" ]; then
+  if [ "$package_manager" == "pacman" ]; then
     echo "sudo pacman -S ${packages[@]}"
     sudo pacman -S --noconfirm ${packages[@]}
   else
     echo "sudo $package_manager install -y ${packages[@]}"
     # System-wide installation; use sudo
-    sudo $package_manager install -y ${packages[@]}
+    sudo "$package_manager" install -y ${packages[@]}
   fi
 }
 
 create_symlinks() {
   echo "Creating symlinks for necessary files.."
+  ln -sf ~/dotfiles/alacritty.toml ~/.config/alacritty.toml
   ln -sf ~/dotfiles/vim ~/.vim
   ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
   ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
@@ -101,50 +102,60 @@ create_symlinks() {
 }
 
 
-# install extras
+# install extra tools that are not in the package manager; git clone and install step..
+
 oh_my_zsh_dir="$HOME/.oh-my-zsh"
 zsh_pure_dir="$HOME/.zsh/pure"
 
+install_from_git_repo() {
+  name="$1"
+  repo_url="$2"
+  clone_dir="$3"
+  if [ -z "$package_manager" || -z "$repo_url" || -z "$clone_dir" ]; then
+    echo "WARN: Not all required arguments are passed to $0"
+    echo "WARN: Skipping git clone..."
+    return;
+  fi
+  echo "Cloning $name.."
+  git clone --depth 1 "$repo_url" "$clone_dir"
+}
+
 install_zsh_extras() {
-  repo_url="https://github.com/ohmyzsh/ohmyzsh.git"
-  echo "Cloning oh-my-zsh.."
-  git clone $repo_url $oh_my_zsh_dir
-
-  pure_repo_url="https://github.com/sindresorhus/pure.git"
-  echo "Cloning zsh-pure theme.."
-  git clone $pure_repo_url $zsh_pure_dir
-
+  install_from_git_repo "oh-my-zsh" "https://github.com/ohmyzsh/ohmyzsh.git" "$oh_my_zsh_dir"
+  install_from_git_repo "zsh-pure-theme" "https://github.com/ohmyzsh/ohmyzsh.git" "$zsh_pure_dir"
   source ~/.zshrc
 }
 
 install_doom_emacs() {
-  doom_repo_url="https://github.com/doomemacs/doomemacs"
-  echo "Cloning doom emacs..."
-  git clone --depth 1 "$doom_repo_url" "$HOME/.emacs.d"
+  install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" "$HOME/.emacs.d"
   echo "Setting up doom emacs..."
   "$HOME/.emacs.d/bin/doom install"
   "$HOME/.emacs.d/bin/doom sync"
 }
 
+install_extra_requirements() {
+  install_doom_emacs \
+    && install_zsh_extras \
+    && set_zsh_default
+}
+
 set_zsh_default() {
   echo "Setting zsh to be default shell.."
-  #chsh -s $(which zsh)
+  chsh -s "$(which zsh)"
 }
 
 # main install function
 install() {
   if check_core_requirements; then
-    if [ ! -d $oh_my_zsh_dir ]; then
+    if [ ! -d "$oh_my_zsh_dir" ]; then
       set_zsh_default && install_zsh_extras
     fi
     create_symlinks && set_zsh_default
     exit 0 # all requirements satisfy
   else
     install_core_requirements \
-      && create_symlinks \
-      && install_doom_emacs \
-      && set_zsh_default \
-      && install_zsh_extras
+      && install_extra_requirements \
+      && create_symlinks
 
     echo "Done"
     exit 0
