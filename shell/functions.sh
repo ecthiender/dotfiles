@@ -6,9 +6,9 @@ THIS_SCRIPT_DIR=${0:a:h}
 
 # Fix the nameservers in /etc/resolv.conf to be sane ones, and not some ISPs
 fixnameservers() {
-  sudo su -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
-  sudo su -c 'echo "nameserver 1.1.1.1" >> /etc/resolv.conf'
   sudo su -c 'echo "nameserver 208.67.222.222" >> /etc/resolv.conf'
+  sudo su -c 'echo "nameserver 1.1.1.1" >> /etc/resolv.conf'
+  sudo su -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 }
 
 # Fix when the psmouse driver fucks up fucking up the touchpad
@@ -82,7 +82,7 @@ upgrade_tools() {
 }
 
 startdockerpg() {
-  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:15-3.3
+  docker run -d -p 5432:5432 --name pgpostgis -e POSTGRES_HOST_AUTH_METHOD=trust postgis/postgis:16-3.4
 }
 
 startdockerredis() {
