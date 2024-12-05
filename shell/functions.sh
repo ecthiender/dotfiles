@@ -4,11 +4,11 @@
 # https://unix.stackexchange.com/a/115431
 THIS_SCRIPT_DIR=${0:a:h}
 
-# Fix the nameservers in /etc/resolv.conf to be sane ones, and not some ISPs
+# Fix the nameservers in /etc/resolv.conf to be sane ones, and not some ISP's
 fixnameservers() {
-  sudo su -c 'echo "nameserver 208.67.222.222" >> /etc/resolv.conf'
+  sudo su -c 'echo "nameserver 208.67.222.222" > /etc/resolv.conf'
   sudo su -c 'echo "nameserver 1.1.1.1" >> /etc/resolv.conf'
-  sudo su -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+  sudo su -c 'echo "nameserver 8.8.8.8" >> /etc/resolv.conf'
 }
 
 # Fix when the psmouse driver fucks up fucking up the touchpad
