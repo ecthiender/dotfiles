@@ -158,6 +158,7 @@ install() {
       && create_symlinks
 
     echo "Done"
+    echo "NOTE:: Install alacritty themes from: https://github.com/alacritty/alacritty-theme"
     exit 0
   fi
 }
