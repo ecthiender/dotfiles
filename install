@@ -10,7 +10,7 @@
 # - Create symlinks. The standard config files/dotfiles in $HOME are symlinked
 # to files in this # repo.
 
-set -euox pipefail
+set -euo pipefail
 
 # First we install
 
@@ -36,7 +36,7 @@ check_core_requirements() {
       to_install=( "${to_install[@]}" $req )
     fi
   done
-  if [ -z "${to_install[@]}" ]; then
+  if [[ -z "${to_install[@]}" ]]; then
     echo "All requirements satisfy.."
     return 0
   else
