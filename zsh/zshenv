@@ -29,6 +29,8 @@ FLUTTER_TOOLS="${HOME}/codeyard/flutter-installation/flutter/bin"
 PATH="$PATH:$FLUTTER_TOOLS"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
 
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
 # finally export this PATH
 export PATH
 . "$HOME/.cargo/env"

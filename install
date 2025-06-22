@@ -10,10 +10,13 @@
 # - Create symlinks. The standard config files/dotfiles in $HOME are symlinked
 # to files in this # repo.
 
-set -e
+set -euox pipefail
+
+
+# First we install
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=(zsh tmux tmuxp vim git emacs ssh htop tree neovim alacritty)
+CORE_REQUIREMENTS=(zsh tmux tmuxp vim git emacs ssh htop tree neovim alacritty ripgrep fd fzf)
 
 is_installed() {
   req=$1
@@ -38,7 +41,7 @@ check_core_requirements() {
       to_install=( "${to_install[@]}" $req )
     fi
   done
-  if [ -z "${to_install[0]}" ]; then
+  if [ -z "${to_install[@]}" ]; then
     echo "All requirements satisfy.."
     return 0
   else
@@ -46,9 +49,8 @@ check_core_requirements() {
   fi
 }
 
-install_core_requirements() {
-  packages=(${to_install[@]})
 
+get_package_manager() {
   # Check the system - and decide the package manager
   # TODO: add arch
   if $(is_installed apt-get); then # apt based distro
@@ -63,7 +65,13 @@ install_core_requirements() {
     echo "Maybe you can modify the script to add your package manager.."
     exit 1
   fi
+  echo "$package_manager"
+}
 
+install_core_requirements() {
+  packages=(${to_install[@]})
+
+  package_manager=$(get_package_manager)
   echo "Found package manager: $package_manager"
   echo "Packages to be insalled: ${packages[@]}"
   read -p "Continue? [y/N]: "
@@ -85,7 +93,7 @@ install_core_requirements() {
 
 create_symlinks() {
   echo "Creating symlinks for necessary files.."
-  ln -sf ~/dotfiles/alacritty.toml ~/.config/alacritty.toml
+  ln -sf ~/dotfiles/alacritty/alacritty.toml ~/.config/alacritty.toml
   ln -sf ~/dotfiles/vim ~/.vim
   ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
   ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
@@ -93,9 +101,8 @@ create_symlinks() {
   ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
   ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
   ln -sf ~/dotfiles/tmux/tmuxp ~/.tmuxp
-  ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+  ln -sf ~/dotfiles/git/gitconfig ~/.gitconfig
   ln -sf ~/dotfiles/shell/aliases ~/.aliases
-  ln -sf ~/dotfiles/doom.d ~/.doom.d
   mkdir -p ~/.stack/templates
   ln -sf ~/dotfiles/stack/config.yaml ~/.stack/config.yaml
   ln -sf ~/dotfiles/stack/anonray.hsfiles ~/.stack/templates/anonray.hsfiles
@@ -111,7 +118,7 @@ install_from_git_repo() {
   name="$1"
   repo_url="$2"
   clone_dir="$3"
-  if [ -z "$package_manager" || -z "$repo_url" || -z "$clone_dir" ]; then
+  if [[ -z "$name" || -z "$repo_url" || -z "$clone_dir" ]]; then
     echo "WARN: Not all required arguments are passed to $0"
     echo "WARN: Skipping git clone..."
     return;
@@ -122,33 +129,32 @@ install_from_git_repo() {
 
 install_zsh_extras() {
   install_from_git_repo "oh-my-zsh" "https://github.com/ohmyzsh/ohmyzsh.git" "$oh_my_zsh_dir"
-  install_from_git_repo "zsh-pure-theme" "https://github.com/ohmyzsh/ohmyzsh.git" "$zsh_pure_dir"
-  source ~/.zshrc
+  install_from_git_repo "zsh-pure-theme" "https://github.com/sindresorhus/pure.git" "$zsh_pure_dir"
 }
 
 install_doom_emacs() {
   install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" "$HOME/.emacs.d"
   echo "Setting up doom emacs..."
+  ln -sf ~/dotfiles/doom.d ~/.doom.d
   "$HOME/.emacs.d/bin/doom install"
   "$HOME/.emacs.d/bin/doom sync"
 }
 
 install_extra_requirements() {
-  install_doom_emacs \
-    && install_zsh_extras \
+    install_zsh_extras \
     && set_zsh_default
 }
 
 set_zsh_default() {
   echo "Setting zsh to be default shell.."
-  chsh -s "$(which zsh)"
+  sudo chsh -s "$(which zsh)" "$(whoami)"
 }
 
 # main install function
 install() {
   if check_core_requirements; then
     if [ ! -d "$oh_my_zsh_dir" ]; then
-      set_zsh_default && install_zsh_extras
+      install_zsh_extras && set_zsh_default
     fi
     create_symlinks && set_zsh_default
     exit 0 # all requirements satisfy

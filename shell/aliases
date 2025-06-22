@@ -33,7 +33,7 @@ alias pp='ping wikipedia.org'
 #alias vnstatmts='vnstat -i ppp0 -d'
 
 # use following rsync options always
-alias rsync='rsync --progress --partial --verbose --recursive --copy-links --copy-dirlinks -h'
+alias rsync='rsync --progress --partial --verbose --recursive -h'
 
 # turn laptop monitor off - debian
 alias screenoff='xset dpms force off'
