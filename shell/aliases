@@ -20,6 +20,7 @@ alias cp='cp -v'
 
 alias v='nvim -u ~/.vimrc'
 alias ec='emacs -mm . &'
+alias bat='bat --theme "Solarized (dark)"'
 
 alias p8='ping 8.8.8.8'
 alias p1='ping 1.1.1.1'

@@ -15,7 +15,7 @@ set -euo pipefail
 # First we install
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=(git alacritty zsh openssh tmux tmuxp htop tree neovim emacs ripgrep fd fzf ttf-iosevka-nerd)
+CORE_REQUIREMENTS=(git alacritty zsh openssh tmux tmuxp htop tree bat neovim emacs ripgrep fd fzf ttf-iosevka-nerd)
 
 is_installed() {
   req="$1"
