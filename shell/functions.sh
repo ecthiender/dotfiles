@@ -73,8 +73,8 @@ urldecode() {
 
 # Update/Upgrade a bunch of my tools that I use
 upgrade_tools() {
-  echo ">> Updating pure zsh theme.."
-  (cd ~/.zsh/pure && git pull origin main)
+  echo ">> Updating zsh system.."
+  zinit update
   echo ">> Upgrading doom emacs.."
   ~/.emacs.d/bin/doom upgrade
 }
