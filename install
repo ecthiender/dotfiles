@@ -128,25 +128,24 @@ set_zsh_default() {
 
 # main install function
 install() {
-  if check_core_requirements; then
-    echo "Core requirements installed."
-    if [[ ! -d ${DOOM_EMACS_DIR} ]]; then
+  if !check_core_requirements; then
+    echo "Installing core requirements.."
+    install_core_requirements
+  fi
+  if [[ ! -d ${DOOM_EMACS_DIR} ]]; then
       echo "Doom emacs not installed, installing..."
       install_doom_emacs
-    fi
-    if [[ ! -d ${ALACRITTY_THEMES_DIR} ]]; then
+  fi
+  if [[ ! -d ${ALACRITTY_THEMES_DIR} ]]; then
       echo "Alacritty themes not installed, installing..."
       install_alacritty_themes
-    fi
-    set_zsh_default && create_symlinks
-  else
-    install_core_requirements \
-      && set_zsh_default \
-      && install_extra_requirements \
-      && create_symlinks
-
-    echo "Done"
   fi
+  if [[ "$SHELL" != *zsh* ]]; then
+      echo "Zsh is not default shell. Setting.."
+      set_zsh_default
+  fi
+  create_symlinks
+  echo "Done"
 }
 
 install

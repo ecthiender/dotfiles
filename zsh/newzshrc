@@ -1,3 +1,6 @@
+# This script uses zinit to bootstrap a zsh config. zinit is a plugin manager, which is used to
+# installed a bunch of default packages, and then a bunch of OMZ plugins are also installed.
+
 # use 256 colors for terminal colors
 if [[ $TERM == "xterm" ]]; then
   export TERM="gnome-256color"
@@ -38,14 +41,12 @@ omz_plugins=(archlinux cabal command-not-found docker extract git python rust st
 omz_libs=(git.zsh)
 
 # Add in snippets
-for plugin in ${omz_plugins}; do
-  echo "performing zinit snippet: $plugin"
-  zinit snippet "OMZP::$plugin"
+for plugin in ${omz_libs}; do
+  zinit snippet "OMZL::$plugin"
 done
 
-for plugin in ${omz_libs}; do
-  echo "performing zinit snippet: $plugin"
-  zinit snippet "OMZL::$plugin"
+for plugin in ${omz_plugins}; do
+  zinit snippet "OMZP::$plugin"
 done
 
 # Load completions
@@ -92,27 +93,19 @@ export EDITOR='nvim'
 #export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Source .zshenv which sets PATH
-if [ -f ~/.zshenv ]; then
-  source ~/.zshenv
-fi
+[ -f ~/.zshenv ] && source ~/.zshenv
 
 # Load my custom alias file
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
+[ -f ~/.aliases ] && source ~/.aliases
 
 # Swap ctrl and capslock keys - maybe move to a lower runlevel script?
 #/usr/bin/setxkbmap -option "ctrl:swapcaps"
 
 # Load gcloud rc file - to enable gcloud completions
-if [ -f ~/.gcloudrc ]; then
-  source ~/.gcloudrc
-fi
+[ -f ~/.gcloudrc ] && source ~/.gcloudrc
 
 # Load my custom shell funcs
-if [ -f ~/dotfiles/shell/functions.sh ]; then
-  source ~/dotfiles/shell/functions.sh
-fi
+[ -f ~/dotfiles/shell/functions.sh ] && source ~/dotfiles/shell/functions.sh
 
 # Shell integrations
 eval "$(fzf --zsh)"
