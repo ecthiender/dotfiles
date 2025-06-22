@@ -128,7 +128,7 @@ set_zsh_default() {
 
 # main install function
 install() {
-  if !check_core_requirements; then
+  if ! check_core_requirements; then
     echo "Installing core requirements.."
     install_core_requirements
   fi
