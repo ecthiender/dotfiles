@@ -18,11 +18,8 @@ set -euo pipefail
 CORE_REQUIREMENTS=(zsh tmux tmuxp vim git emacs ssh htop tree neovim alacritty ripgrep fd fzf ttf-iosevka-nerd)
 
 is_installed() {
-  req=$1
-  # To find out a program is installed from shell script might not be
-  # straightforward and consistent. See this answer for more details:
-  # http://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script#677212
-  if $(command -v "$req" > /dev/null); then # if found
+  req="$1"
+  if $(pacman -Qi "$req" > /dev/null); then # if found
     return 0
   else
     return 1
@@ -32,7 +29,9 @@ is_installed() {
 check_core_requirements() {
   for req in "${CORE_REQUIREMENTS[@]}"
   do
+    echo "Check if $req is installed.."
     if ! $(is_installed "$req"); then
+      echo "$req is not installed; adding to to_install"
       to_install=( "${to_install[@]}" $req )
     fi
   done
@@ -71,20 +70,21 @@ install_core_requirements() {
 }
 
 create_symlinks() {
+  dotfiles="$HOME/dotfiles"
+  mkdir -p "$HOME/.stack/templates"
   echo "Creating symlinks for necessary files.."
-  ln -sf ~/dotfiles/alacritty/alacritty.toml ~/.config/alacritty.toml
-  ln -sf ~/dotfiles/vim ~/.vim
-  ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
-  ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
-  ln -sf ~/dotfiles/zsh/zshenv ~/.zshenv
-  ln -sf ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-  ln -sf ~/dotfiles/tmux/tmuxline.conf ~/.tmuxline.conf
-  ln -sf ~/dotfiles/tmux/tmuxp ~/.tmuxp
-  ln -sf ~/dotfiles/git/gitconfig ~/.gitconfig
-  ln -sf ~/dotfiles/shell/aliases ~/.aliases
-  mkdir -p ~/.stack/templates
-  ln -sf ~/dotfiles/stack/config.yaml ~/.stack/config.yaml
-  ln -sf ~/dotfiles/stack/anonray.hsfiles ~/.stack/templates/anonray.hsfiles
+  ln -sf "$dotfiles/alacritty/alacritty.toml" ~/.config/alacritty.toml
+  ln -sf "$dotfiles/vim" ~/.vim
+  ln -sf "$dotfiles/vim/vimrc" ~/.vimrc
+  ln -sf "$dotfiles/zsh/zshrc" ~/.zshrc
+  ln -sf "$dotfiles/zsh/zshenv" ~/.zshenv
+  ln -sf "$dotfiles/tmux/tmux.conf" ~/.tmux.conf
+  ln -sf "$dotfiles/tmux/tmuxline.conf" ~/.tmuxline.conf
+  ln -sf "$dotfiles/tmux/tmuxp" ~/.tmuxp
+  ln -sf "$dotfiles/git/gitconfig" ~/.gitconfig
+  ln -sf "$dotfiles/shell/aliases" ~/.aliases
+  ln -sf "$dotfiles/stack/config.yaml" ~/.stack/config.yaml
+  ln -sf "$dotfiles/stack/anonray.hsfiles" ~/.stack/templates/anonray.hsfiles
 }
 
 # install extra tools that are not in the package manager; git clone and install step..
@@ -101,17 +101,20 @@ install_from_git_repo() {
   git clone --depth 1 "$repo_url" "$clone_dir"
 }
 
+DOOM_EMACS_DIR="$HOME/.emacs.d"
+
 install_doom_emacs() {
   echo "Installing doom emacs..."
-  install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" "$HOME/.emacs.d"
+  install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" ${DOOM_EMACS_DIR}
   echo "Setting up doom emacs..."
-  ln -sf ~/dotfiles/doom.d ~/.doom.d
-  "$HOME/.emacs.d/bin/doom sync"
+  ln -sf "$HOME/dotfiles/doom.d" "$HOME/.doom.d"
+  eval "$(${HOME}/.emacs.d/bin/doom sync)"
 }
 
+ALACRITTY_THEMES_DIR="$HOME/.config/alacritty/themes"
 install_alacritty_themes() {
   echo "Installing alacritty themes..."
-  install_from_git_repo "alacritty themes" "https://github.com/alacritty/alacritty-theme" "$HOME/.config/alacritty/themes"
+  install_from_git_repo "alacritty themes" "https://github.com/alacritty/alacritty-theme" ${ALACRITTY_THEMES_DIR}
 }
 
 install_extra_requirements() {
@@ -127,16 +130,23 @@ set_zsh_default() {
 # main install function
 install() {
   if check_core_requirements; then
-    set_zsh_default \
-      && install_extra_requirements \
-      && create_symlinks
-    exit 0 # all requirements satisfy
+    echo "Core requirements installed."
+    if [[ ! -d ${DOOM_EMACS_DIR} ]]; then
+      echo "Doom emacs not installed, installing..."
+      install_doom_emacs
+    fi
+    if [[ ! -d ${ALACRITTY_THEMES_DIR} ]]; then
+      echo "Alacritty themes not installed, installing..."
+      install_alacritty_themes
+    fi
+    set_zsh_default && create_symlinks
   else
     install_core_requirements \
+      && set_zsh_default \
       && install_extra_requirements \
       && create_symlinks
+
     echo "Done"
-    exit 0
   fi
 }
 
