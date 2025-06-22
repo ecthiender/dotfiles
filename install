@@ -76,7 +76,8 @@ create_symlinks() {
   ln -sf "$dotfiles/alacritty/alacritty.toml" ~/.config/alacritty.toml
   ln -sf "$dotfiles/vim" ~/.vim
   ln -sf "$dotfiles/vim/vimrc" ~/.vimrc
-  ln -sf "$dotfiles/zsh/zshrc" ~/.zshrc
+  #ln -sf "$dotfiles/zsh/omz_zshrc.zsh" ~/.zshrc
+  ln -sf "$dotfiles/zsh/zinit_zshrc.zsh" ~/.zshrc
   ln -sf "$dotfiles/zsh/zshenv" ~/.zshenv
   ln -sf "$dotfiles/tmux/tmux.conf" ~/.tmux.conf
   ln -sf "$dotfiles/tmux/tmuxline.conf" ~/.tmuxline.conf
