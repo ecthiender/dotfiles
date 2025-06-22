@@ -15,7 +15,7 @@ set -euo pipefail
 # First we install
 
 # These are the requirements for my environ
-CORE_REQUIREMENTS=(zsh tmux tmuxp vim git emacs ssh htop tree neovim alacritty ripgrep fd fzf ttf-iosevka-nerd)
+CORE_REQUIREMENTS=(git alacritty zsh openssh tmux tmuxp htop tree neovim emacs ripgrep fd fzf ttf-iosevka-nerd)
 
 is_installed() {
   req="$1"
@@ -102,7 +102,6 @@ install_from_git_repo() {
 }
 
 DOOM_EMACS_DIR="$HOME/.emacs.d"
-
 install_doom_emacs() {
   echo "Installing doom emacs..."
   install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" ${DOOM_EMACS_DIR}
