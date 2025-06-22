@@ -106,7 +106,6 @@ install_doom_emacs() {
   install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" "$HOME/.emacs.d"
   echo "Setting up doom emacs..."
   ln -sf ~/dotfiles/doom.d ~/.doom.d
-  "$HOME/.emacs.d/bin/doom install"
   "$HOME/.emacs.d/bin/doom sync"
 }
 
