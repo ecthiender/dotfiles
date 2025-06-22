@@ -77,8 +77,6 @@ upgrade_tools() {
   (cd ~/.zsh/pure && git pull origin main)
   echo ">> Upgrading doom emacs.."
   ~/.emacs.d/bin/doom upgrade
-  echo ">> Updating oh-my-zsh.."
-  omz update
 }
 
 startdockerpg() {

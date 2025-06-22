@@ -1,40 +1,9 @@
 session_name: work
-start_directory: /home/ecthiender/work/hasura/
+start_directory: /home/ecthiender/work
 windows:
 
 # 1. Main window to compile and run the code
-- window_name: v3-engine
-  start_directory: v3-engine
+- window_name: untitled
   focus: true
-  options:
-    automatic-rename: 'off'
-
-# 2. Secondary window to run NDC connector(s)
-- window_name: v3-engine
-  start_directory: v3-engine
-  options:
-    automatic-rename: 'off'
-
-# 3. Used exclusively to run things against the server, like curl and other scripts which act as clients
-- window_name: clients
-  start_directory: v3-engine
-  options:
-    automatic-rename: 'off'
-
-# 4. this window is used exclusively to run lux
-- window_name: lux
-  start_directory: /home/ecthiender/work/hasura/lux
-  options:
-    automatic-rename: 'off'
-
-# 5. v2-dev
-- window_name: v2-pro
-  start_directory: /home/ecthiender/work/hasura/graphql-engine-mono/pro/server
-  options:
-    automatic-rename: 'off'
-
-# 6. v2-dev
-- window_name: v2-hge
-  start_directory: /home/ecthiender/work/hasura/graphql-engine-mono/server
   options:
     automatic-rename: 'off'
