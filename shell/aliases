@@ -1,9 +1,5 @@
 # vim: set ft=conf
-
-# Alias file which can be sourced in your favourite shell startup script
-# Aliases help you type fewer keystrokes for the commands you use the most and
-# also automate some of your mundane taks.
-# ecthiender <rayanon@riseup.net>
+# Sane aliases to setup for efficiency and fewer keystrokes.
 
 # enable color support of ls
 alias ls='ls --color'
@@ -18,41 +14,32 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# mv and cp are always verbose
+alias mv='mv -v'
+alias cp='cp -v'
 
 alias v='nvim -u ~/.vimrc'
 alias ec='emacs -mm . &'
-alias vmd='npx vmd '
-alias match="awk 'FNR==NR{a[$1];next}($1 in a){print}' file2 file1"
 
 alias p8='ping 8.8.8.8'
 alias p1='ping 1.1.1.1'
 alias pp='ping wikipedia.org'
-#alias vnstatmts='vnstat -i ppp0 -d'
+alias match="awk 'FNR==NR{a[$1];next}($1 in a){print}' file2 file1"
 
 # use following rsync options always
 alias rsync='rsync --progress --partial --verbose --recursive -h'
 
-# turn laptop monitor off - debian
-alias screenoff='xset dpms force off'
-
-# mv and cp are always verbose
-alias mv='mv -v'
-alias cp='cp -v'
+alias vmd='npx vmd '
 
 # git aliases
 alias git_history='git log --graph --all --simplify-by-decoration'
 
 ### very much my system/environment/work specific aliases ###
-alias mocp='mocp -T moca_theme'
 alias mtr='mtr -t'
 alias p='ipython'
 alias b='stack build --fast --ghc-options -j'
 alias cb='cabal build -j'
 alias crun='cabal run'
-alias hsb='make build-all' # hasura server build
 alias xclip='xclip -sel clip'
 alias dc='docker compose '
 alias gen-random='cat /dev/urandom | head -c 256 | base64'
@@ -60,16 +47,6 @@ alias gen-random='cat /dev/urandom | head -c 256 | base64'
 # aliases for custom scripts
 alias tmx='${HOME}/dotfiles/tmux/init.sh'
 
-### Kubectl aliases ###
-alias pods='kubectl -n hasura get pods '
-alias klogs='kubectl -n hasura logs'
-alias deploys='kubectl -n hasura get deploy '
-alias deployo='kubectl -n hasura get deploy -o yaml '
-alias podo='kubectl -n hasura get pod -o yaml '
-alias platform='kubectl get cm platform -n hasura -o yaml'
-alias describe='kubectl -n hasura describe pods '
-
-# ClamAV aliases
-alias avstatus='sudo systemctl status clamav-daemon && sudo systemctl status clamav-freshclam'
-alias avstop='sudo systemctl stop clamav-daemon.socket && sudo systemctl stop clamav-daemon.service && sudo systemctl stop clamav-freshclam'
-alias avstart='sudo systemctl start clamav-daemon.socket && sudo systemctl start clamav-daemon.service && sudo systemctl start clamav-freshclam'
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
