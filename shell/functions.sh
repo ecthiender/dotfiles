@@ -71,8 +71,8 @@ urldecode() {
   echo "$1" | awk -niord '{printf RT?$0chr("0x"substr(RT,2)):$0}' RS=%..
 }
 
-# Update/Upgrade a bunch of my tools that I use
-upgrade_tools() {
+# Update dev env setup
+updateenv() {
   echo ">> Updating zsh system.."
   zinit update
   echo ">> Upgrading doom emacs.."
