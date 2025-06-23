@@ -12,10 +12,24 @@
 
 set -euo pipefail
 
-# First we install
-
-# These are the requirements for my environ
-CORE_REQUIREMENTS=(git alacritty zsh openssh tmux tmuxp htop tree bat neovim emacs ripgrep fd fzf ttf-iosevka-nerd)
+# Core requirements for my environ
+CORE_REQUIREMENTS=(
+  git
+  alacritty
+  zsh
+  openssh
+  tmux
+  tmuxp
+  htop
+  tree
+  bat
+  neovim
+  emacs
+  ripgrep
+  fd
+  fzf
+  ttf-iosevka-nerd
+)
 
 is_installed() {
   req="$1"
@@ -70,21 +84,47 @@ install_core_requirements() {
 }
 
 create_symlinks() {
-  dotfiles="$HOME/dotfiles"
+  local dotfiles="$HOME/dotfiles"
   mkdir -p "$HOME/.stack/templates"
-  echo "Creating symlinks for necessary files.."
-  ln -sf "$dotfiles/alacritty/alacritty.toml" ~/.config/alacritty.toml
-  ln -sf "$dotfiles/vim" ~/.vim
-  ln -sf "$dotfiles/vim/vimrc" ~/.vimrc
-  #ln -sf "$dotfiles/zsh/omz_zshrc.zsh" ~/.zshrc
-  ln -sf "$dotfiles/zsh/zinit_zshrc.zsh" ~/.zshrc
-  ln -sf "$dotfiles/zsh/zshenv" ~/.zshenv
-  ln -sf "$dotfiles/tmux/tmux.conf" ~/.tmux.conf
-  ln -sf "$dotfiles/tmux/tmuxp" ~/.tmuxp
-  ln -sf "$dotfiles/git/gitconfig" ~/.gitconfig
-  ln -sf "$dotfiles/shell/aliases" ~/.aliases
-  ln -sf "$dotfiles/stack/config.yaml" ~/.stack/config.yaml
-  ln -sf "$dotfiles/stack/anonray.hsfiles" ~/.stack/templates/anonray.hsfiles
+
+  echo "Creating symlinks for necessary files..."
+
+  declare -A symlinks=(
+    # Alacritty
+    ["$dotfiles/alacritty/alacritty.toml"]="~/.config/alacritty.toml"
+
+    # Doom Emacs
+    ["$dotfiles/doom.d"]="$HOME/.doom.d"
+
+    # Vim
+    ["$dotfiles/vim"]="~/.vim"
+    ["$dotfiles/vim/vimrc"]="~/.vimrc"
+
+    # Zsh
+    # ["$dotfiles/zsh/omz_zshrc.zsh"]="~/.zshrc"
+    ["$dotfiles/zsh/zinit_zshrc.zsh"]="~/.zshrc"
+    ["$dotfiles/zsh/zshenv"]="~/.zshenv"
+
+    # Tmux
+    ["$dotfiles/tmux/tmux.conf"]="~/.tmux.conf"
+    ["$dotfiles/tmux/tmuxp"]="~/.tmuxp"
+
+    # Git
+    ["$dotfiles/git/gitconfig"]="~/.gitconfig"
+
+    # Shell
+    ["$dotfiles/shell/aliases"]="~/.aliases"
+
+    # Haskell Stack
+    ["$dotfiles/stack/config.yaml"]="~/.stack/config.yaml"
+    ["$dotfiles/stack/anonray.hsfiles"]="~/.stack/templates/anonray.hsfiles"
+  )
+
+  for src in "${!symlinks[@]}"; do
+    local target="${symlinks[$src]}"
+    echo "Linking: $src →  $target"
+    ln -sf "$src" "$target"
+  done
 }
 
 # install extra tools that are not in the package manager; git clone and install step..
@@ -106,8 +146,8 @@ install_doom_emacs() {
   echo "Installing doom emacs..."
   install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" ${DOOM_EMACS_DIR}
   echo "Setting up doom emacs..."
-  ln -sf "$HOME/dotfiles/doom.d" "$HOME/.doom.d"
-  eval "$(${HOME}/.emacs.d/bin/doom sync)"
+  sleep 1
+  ~/.emacs.d/bin/doom sync
 }
 
 ALACRITTY_THEMES_DIR="$HOME/.config/alacritty/themes"
@@ -116,12 +156,6 @@ install_alacritty_themes() {
   install_from_git_repo "alacritty themes" "https://github.com/alacritty/alacritty-theme" ${ALACRITTY_THEMES_DIR}
 }
 
-#TPM_DIR="$HOME/.tmux/plugins/tpm"
-#install_tmux_tpm() {
-#  echo "Installing tmux tpm..."
-#  install_from_git_repo "tmux tpm" "https://github.com/tmux-plugins/tpm" ${TPM_DIR}
-#}
-
 set_zsh_default() {
   echo "Setting zsh to be default shell.."
   sudo chsh -s "$(which zsh)" "$(whoami)"
@@ -129,27 +163,28 @@ set_zsh_default() {
 
 # main install function
 install() {
+  # Step 1: install core requirements..
   if ! check_core_requirements; then
     echo "Installing core requirements.."
     install_core_requirements
   fi
+  # Step 2: check and set zsh to be default shell
   if [[ "$SHELL" != *zsh* ]]; then
-      echo "Zsh is not default shell. Setting.."
-      set_zsh_default
+    echo "Zsh is not default shell. Setting.."
+    set_zsh_default
   fi
-  if [[ ! -d ${ALACRITTY_THEMES_DIR} ]]; then
-      echo "Alacritty themes not installed, installing..."
-      install_alacritty_themes
-  fi
-  #if [[ ! -d ${TPM_DIR} ]]; then
-  #    echo "tmux tpm not installed, installing..."
-  #    install_tmux_tpm
-  #fi
-  if [[ ! -d ${DOOM_EMACS_DIR} ]]; then
-      echo "Doom emacs not installed, installing..."
-      install_doom_emacs
-  fi
+  # Step 3: setup the symlinks..
   create_symlinks
+  # Step 4: manual install of alacritty themes..
+  if [[ ! -d ${ALACRITTY_THEMES_DIR} ]]; then
+    echo "Alacritty themes not installed, installing..."
+    install_alacritty_themes
+  fi
+  # Step 5: manual install of doom emacs..
+  if [[ ! -d ${DOOM_EMACS_DIR} ]]; then
+    echo "Doom emacs not installed, installing..."
+    install_doom_emacs
+  fi
   echo "Done"
 }
 
