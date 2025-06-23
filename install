@@ -91,33 +91,33 @@ create_symlinks() {
 
   declare -A symlinks=(
     # Alacritty
-    ["$dotfiles/alacritty/alacritty.toml"]="~/.config/alacritty.toml"
+    ["$dotfiles/alacritty/alacritty.toml"]="$HOME/.config/alacritty.toml"
 
     # Doom Emacs
     ["$dotfiles/doom.d"]="$HOME/.doom.d"
 
     # Vim
-    ["$dotfiles/vim"]="~/.vim"
-    ["$dotfiles/vim/vimrc"]="~/.vimrc"
+    ["$dotfiles/vim"]="$HOME/.vim"
+    ["$dotfiles/vim/vimrc"]="$HOME/.vimrc"
 
     # Zsh
-    # ["$dotfiles/zsh/omz_zshrc.zsh"]="~/.zshrc"
-    ["$dotfiles/zsh/zinit_zshrc.zsh"]="~/.zshrc"
-    ["$dotfiles/zsh/zshenv"]="~/.zshenv"
+    # ["$dotfiles/zsh/omz_zshrc.zsh"]="$HOME/.zshrc"
+    ["$dotfiles/zsh/zinit_zshrc.zsh"]="$HOME/.zshrc"
+    ["$dotfiles/zsh/zshenv"]="$HOME/.zshenv"
 
     # Tmux
-    ["$dotfiles/tmux/tmux.conf"]="~/.tmux.conf"
-    ["$dotfiles/tmux/tmuxp"]="~/.tmuxp"
+    ["$dotfiles/tmux/tmux.conf"]="$HOME/.tmux.conf"
+    ["$dotfiles/tmux/tmuxp"]="$HOME/.tmuxp"
 
     # Git
-    ["$dotfiles/git/gitconfig"]="~/.gitconfig"
+    ["$dotfiles/git/gitconfig"]="$HOME/.gitconfig"
 
     # Shell
-    ["$dotfiles/shell/aliases"]="~/.aliases"
+    ["$dotfiles/shell/aliases"]="$HOME/.aliases"
 
     # Haskell Stack
-    ["$dotfiles/stack/config.yaml"]="~/.stack/config.yaml"
-    ["$dotfiles/stack/anonray.hsfiles"]="~/.stack/templates/anonray.hsfiles"
+    ["$dotfiles/stack/config.yaml"]="$HOME/.stack/config.yaml"
+    ["$dotfiles/stack/anonray.hsfiles"]="$HOME/.stack/templates/anonray.hsfiles"
   )
 
   for src in "${!symlinks[@]}"; do
