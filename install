@@ -116,11 +116,11 @@ install_alacritty_themes() {
   install_from_git_repo "alacritty themes" "https://github.com/alacritty/alacritty-theme" ${ALACRITTY_THEMES_DIR}
 }
 
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-install_tmux_tpm() {
-  echo "Installing tmux tpm..."
-  install_from_git_repo "tmux tpm" "https://github.com/tmux-plugins/tpm" ${TPM_DIR}
-}
+#TPM_DIR="$HOME/.tmux/plugins/tpm"
+#install_tmux_tpm() {
+#  echo "Installing tmux tpm..."
+#  install_from_git_repo "tmux tpm" "https://github.com/tmux-plugins/tpm" ${TPM_DIR}
+#}
 
 set_zsh_default() {
   echo "Setting zsh to be default shell.."
@@ -141,10 +141,10 @@ install() {
       echo "Alacritty themes not installed, installing..."
       install_alacritty_themes
   fi
-  if [[ ! -d ${TPM_DIR} ]]; then
-      echo "tmux tpm not installed, installing..."
-      install_tmux_tpm
-  fi
+  #if [[ ! -d ${TPM_DIR} ]]; then
+  #    echo "tmux tpm not installed, installing..."
+  #    install_tmux_tpm
+  #fi
   if [[ ! -d ${DOOM_EMACS_DIR} ]]; then
       echo "Doom emacs not installed, installing..."
       install_doom_emacs
