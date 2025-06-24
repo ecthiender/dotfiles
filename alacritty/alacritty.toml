@@ -4,10 +4,15 @@ live_config_reload = true
 
 ##### Theming (Third-party)
 ## From: https://github.com/alacritty/alacritty-theme
+
+# light theme - switch to this when working outdoors/in a bright area
+# "~/.config/alacritty/themes/themes/ashes_light.toml"
+# default dark theme
+# "~/.config/alacritty/themes/themes/tomorrow_night.toml",
 import = [
-    #"~/.config/alacritty/themes/themes/alabaster.toml"
-    "~/.config/alacritty/themes/themes/tomorrow_night.toml"
+  "~/.config/alacritty/themes/themes/tomorrow_night.toml",
 ]
+
 ##### End Theming
 
 [window]

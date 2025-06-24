@@ -18,7 +18,8 @@ alias egrep='egrep --color=auto'
 alias mv='mv -v'
 alias cp='cp -v'
 
-alias v='nvim -u ~/.vimrc'
+alias v='nvim'
+alias vim='nvim'
 alias ec='emacs -mm . &'
 alias bat='bat --theme "Solarized (dark)"'
 

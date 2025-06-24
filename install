@@ -96,9 +96,12 @@ create_symlinks() {
     # Doom Emacs
     ["$dotfiles/doom.d"]="$HOME/.doom.d"
 
-    # Vim
-    ["$dotfiles/vim"]="$HOME/.vim"
-    ["$dotfiles/vim/vimrc"]="$HOME/.vimrc"
+    # ~Vim~ - Disabling vim for now
+    #["$dotfiles/vim"]="$HOME/.vim"
+    #["$dotfiles/vim/vimrc"]="$HOME/.vimrc"
+
+    # Neovim
+    ["$dotfiles/neovim"]="$HOME/.config/nvim"
 
     # Zsh
     # ["$dotfiles/zsh/omz_zshrc.zsh"]="$HOME/.zshrc"
@@ -147,6 +150,7 @@ install_doom_emacs() {
   install_from_git_repo "doom emacs" "https://github.com/doomemacs/doomemacs" ${DOOM_EMACS_DIR}
   echo "Setting up doom emacs..."
   sleep 1
+  echo "Please note, setting up and installing all doom packages will take a while. Go grab a coffee, take a break, and so on!"
   ~/.emacs.d/bin/doom sync
 }
 
