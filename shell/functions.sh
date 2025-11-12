@@ -6,7 +6,6 @@ THIS_SCRIPT_DIR=${0:a:h}
 
 # Fix the nameservers in /etc/resolv.conf to be sane ones, and not some ISP's
 fixnameservers() {
-  sudo su -c 'echo "nameserver 208.67.222.222" > /etc/resolv.conf'
   sudo su -c 'echo "nameserver 1.1.1.1" >> /etc/resolv.conf'
   sudo su -c 'echo "nameserver 8.8.8.8" >> /etc/resolv.conf'
 }
@@ -34,8 +33,7 @@ dusage() {
 #  test -f "$1" && command cat "$1" || ls "$1"
 #}
 
-# a shell function to augment docker to delete all containers, running and
-# stopped, at one go!
+# augment the docker stats commmand to have a default formatting
 docker() {
   if [[ $@ == "stats" ]]; then
     command docker stats --format \
@@ -75,6 +73,12 @@ urldecode() {
 updateenv() {
   echo ">> Updating zsh system.."
   zinit update
+  if prompt_confirm "Update Doom Emacs??"; then
+    updatedoom
+  fi
+}
+
+updatedoom() {
   echo ">> Upgrading doom emacs.."
   ~/.emacs.d/bin/doom upgrade
 }
@@ -87,10 +91,11 @@ startdockerredis() {
   docker run -d -p 6379:6379 --name localredis redis:7.4.2
 }
 
-stacknewmy() {
+# stack new to command to use my stack template
+stacknew() {
   (
   if [[ -z "$1" ]]; then
-    echo "ERROR: project name required. Usage: stacknewmy <project-name>"
+    echo "ERROR: project name required. Usage: stacknew <project-name>"
     exit 1;
   fi
   stack new --bare "$1" ~/.stack/templates/anonray.hsfiles
@@ -101,6 +106,18 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do
     time $shell -i -c exit
+  done
+}
+
+prompt_confirm() {
+  while true; do
+    echo "\n"
+    read -r "REPLY?${1:-Continue?} [y/N]: "
+    case ${(L)REPLY} in
+      y|yes) echo ; return 0 ;;
+      n|no) echo ; return 1 ;;
+      *) echo "invalid response" ;;
+    esac
   done
 }
 

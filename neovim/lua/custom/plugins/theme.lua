@@ -1,19 +1,19 @@
 -- set my theme here; current theme tairiki tomorrow night palette
-return {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
-	config = function()
-		require("catppuccin").setup({
-			flavour = "auto",
-			no_italic = true, -- Force no italic
-		})
-		vim.opt.background = "dark"
-		vim.cmd.colorscheme("catppuccin")
-	end,
-}
-
--- {
+-- return {
+-- 	"catppuccin/nvim",
+-- 	name = "catppuccin",
+-- 	priority = 1000,
+-- 	config = function()
+-- 		require("catppuccin").setup({
+-- 			flavour = "auto",
+-- 			no_italic = true, -- Force no italic
+-- 		})
+-- 		vim.opt.background = "light"
+-- 		vim.cmd.colorscheme("catppuccin")
+-- 	end,
+-- }
+--
+-- return {
 -- 	"rebelot/kanagawa.nvim",
 -- 	config = function()
 -- 		require("kanagawa").setup({
@@ -26,24 +26,24 @@ return {
 -- 	end,
 -- }
 --
--- {
--- 	"deparr/tairiki.nvim",
--- 	lazy = false,
--- 	priority = 1000, -- recommended if you use tairiki as your default theme
--- 	config = function()
--- 		require("tairiki").setup({
--- 			palette = "tomorrow",
--- 			-- style for different syntactic tokens
--- 			-- see :help nvim_set_hl() for available keys
--- 			code_style = {
--- 				comments = { italic = false },
--- 			},
--- 		})
--- 		vim.opt.background = "dark"
--- 		vim.cmd.colorscheme("tairiki")
--- 	end,
--- }
---
+return {
+	"deparr/tairiki.nvim",
+	lazy = false,
+	priority = 1000, -- recommended if you use tairiki as your default theme
+	config = function()
+		require("tairiki").setup({
+			palette = "tomorrow",
+			-- style for different syntactic tokens
+			-- see :help nvim_set_hl() for available keys
+			code_style = {
+				comments = { italic = false },
+			},
+		})
+		vim.opt.background = "dark"
+		vim.cmd.colorscheme("tairiki")
+	end,
+}
+
 -- {
 -- 	"vague2k/vague.nvim",
 -- 	config = function()
