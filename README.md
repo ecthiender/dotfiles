@@ -1,17 +1,18 @@
 # Dotfiles
 
 This is a collection of tools, configuration files, shell aliases, and scripts
-to setup my - *very opinonated* - working environment.
+to setup my dev environment.
 
 Mainly it has:
 
-* Vim
-* Tmux
-* Zsh
-* Git, SSH
+* neovim
+* tmux
+* zsh
+* Alacritty
+* git, SSH
 * rsync
 * Emacs (for org-mode backend)
-* And a lot of vim plugins
+* and many more things
 
 # Usage
 
@@ -26,4 +27,4 @@ Once done modifying, to install the environment, run the `install` script:
 $ ./install
 ```
 
-PS: Currently only Arch Linux, Debian and CentOS/RHEL based distros are supported.
+PS: Currently only Arch Linux & Arch-based distros are tested.
